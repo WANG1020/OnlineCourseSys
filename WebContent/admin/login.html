@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- admin -->
+<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'>
+<title>OnlineCourse</title>
+<link rel="stylesheet" type="text/css" href="../css/login1.css">
+<script>
+function check_admin(form)
+{
+	if(form.username.value=="")
+	{
+		alert("请输入用户账号!");
+		form.name.focus();
+		return false;
+	}
+	if(form.password.value=="")
+	{
+		alert("请输入用户密码!");
+		form.password.focus();
+		return false;
+	}
+	if (form.check.value=="")
+	{
+		alert("验证码不正确，请重新输入！");
+		form.verify.focus();
+		return false;
+	}
+	return true;
+}
+</script>
+</head>
+<body>
+<div class="header">
+	<h4>OnlineCourse在线学习</h4>
+</div>
+<div class="div1">
+<form  class="wra1" action="../LoginServlet" method="post" onSubmit="return check_admin(this);">
+	<table rules=none cellspacing=0  align="center" width="400px" height="300px">
+		<tr class="tr1">
+			<th colspan="4" align="center">OnlineCourse-管理员登录</th>
+		</tr>
+		<tr>
+			<td colspan="4" align="center">&nbsp;<input class="input1" type="text" name="username" id="username" placeholder="请输入账号" ></td>
+		</tr>
+		<tr>
+			<td colspan="4" align="center">&nbsp;<input class="input1" type="password" name="password" id="password" placeholder="请输入密码"></td>
+		</tr>
+		<tr>
+	    	<td colspan="4" align="center">&nbsp;<img border=0 src="verifyCode.jsp"></td>
+		</tr>
+		<tr>
+	    	<td colspan="4" align="center">&nbsp;<input  class="input1" type="text" name="check" id="check" placeholder="请输入验证码"></td>
+		</tr>
+		<tr><td><input type="hidden" name="flag" value="0"></td></tr>
+		<tr>
+			<td colspan="4" align="center">
+			<input type="submit" value="确定">
+			&nbsp;<input type="reset" value="重置" >
+			</td>
+		</tr>
+		<tr class="trc">
+			<td class="wrath" colspan="4" align="center">
+			身份切换：&nbsp;
+			<a href="../teacher/login.html"><em>教师登录</em></a>&nbsp;/&nbsp;
+			<a href="../stu/login.html"><em>学生登录</em></a>&nbsp;/&nbsp;
+			<a href="../admin/login.html"><em>管理员</em></a></td>
+		</tr>
+	</table>
+	<p align="center"><a href="register.jsp">还没注册？请点击注册!</a></p>
+</form>
+</div>
+<div class="footer-box">
+	<p align="center">
+                    <script type="text/javascript">
+                        document.write("©2019 - "
+                        + new Date().getFullYear()
+                        + " 南京工业职业技术学院-软件1711-王喜-大二web实训项目-在线课程平台开发");//update 自动更新的年份
+                    </script>
+     </p>
+</div>
+</body>
+</html>

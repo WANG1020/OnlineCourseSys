@@ -1,0 +1,20 @@
+<!DOCTYPE>  
+<html>  
+<head>  
+    <meta charset="utf-8">  
+    <title>html5 input color标签</title>  
+</head>  
+<body style="overflow: hidden; background: rgb(255, 0, 128);">  
+<input style="position:absolute;left:3000px;" type="color" id="color">  
+<button id="btn">弹出色盘</button>  
+<script type="text/javascript">  
+    document.getElementById('btn').onclick = function(){  
+        document.getElementById('color').click();  
+    };  
+    document.getElementById('color').onchange = function(){  
+        document.body.style.background = this.value;  
+        alert('您选择的颜色是：'+this.value);
+    };  
+</script>  
+</body>  
+</html>  

@@ -1,0 +1,22 @@
+@CHARSET "UTF-8";
+/* stu模块 */
+.div1{
+	background-image:url("../images/login(1).jpg");
+	width:100%;
+	height:600px;
+}
+.header {
+	width:100%;
+	height:70px;
+    margin: 0 auto;
+    overflow: hidden;
+    background: #FFF;
+}
+table{
+	border-collapse:collapse;
+	background-color:white;
+}
+.footer-box {
+    width: 100%;
+    background: #FFF;
+}
