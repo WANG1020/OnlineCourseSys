@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>OnlineCourse-首页</title>
 <link href="../bootstrap4/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" href="../dist/css/lightbox.min.css">
 <link rel="stylesheet" type="text/css" href="../css/oc_home.css">
@@ -166,81 +166,83 @@
 </br></br>
 <%List<course> list=new ArrayList<course>(); 
 	list=DaoFactory.getcourseDaoInstance().checkCourse();
+	int size=list.size();
+	
 %>
 <div class="wrapper1">	
 	<h4 align="center"><em>其他课程</em></h4>	
 	<div class="container-fluid">
-	<div class="row">
-		<div class="col-md-12">
-			<div class="row">
-				<div class="col-md-3">
-					<div class="card">
-						<img class="card-img-top" alt="kec1" src="../images/c.jpg" width="294px" height="98px" />
-						<div class="card-block">
-							<h5 class="card-title">
-								C语言入门
-							</h5>
-							<p style="width: 98%;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">
-								C语言入门视频教程，带你进入编程世界的必修课-C语言
-							</p>
-							<p align="center">
-								<a class="btn btn-primary" href="#">参与学习</a> 
-							</p>
+		<div class="row">
+			<div class="col-md-12">
+				<div class="row">
+					<div class="col-md-3">
+						<div class="card">
+							<img class="card-img-top" alt="kec1" src="../images/c.jpg" width="294px" height="98px" />
+							<div class="card-block">
+								<h5 class="card-title">
+									<%=list.get(0).getName() %>
+								</h5>
+								<p style="width: 98%;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">
+									<%=list.get(0).getInto() %>
+								</p>
+								<p align="center">
+									<a class="btn btn-primary" href="#">参与学习</a> 
+								</p>
+							</div>
 						</div>
 					</div>
-				</div>
-				<div class="col-md-3">
-					<div class="card">
-						<img class="card-img-top" alt="kec2" src="../images/sf.jpg" width="294px" height="98px" />
-						<div class="card-block">
-							<h5 class="card-title">
-								玩转算法和数据结构
-							</h5>
-							<p style="width: 98%;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">
-								ACM获奖者亲授算法面试基础，C++讲解，配套完整Java代码，培养算法思维
-							</p>
-							<p align="center">
-								<a class="btn btn-primary" href="#">参与学习</a> 
-							</p>
+					<div class="col-md-3">
+						<div class="card">
+							<img class="card-img-top" alt="kec2" src="../images/sf.jpg" width="294px" height="98px" />
+							<div class="card-block">
+								<h5 class="card-title">
+									<%=list.get(1).getName() %>
+								</h5>
+								<p style="width: 98%;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">
+									<%=list.get(1).getInto() %>
+								</p>
+								<p align="center">
+									<a class="btn btn-primary" href="#">参与学习</a> 
+								</p>
+							</div>
 						</div>
 					</div>
-				</div>
-				<div class="col-md-3">
-					<div class="card">
-						<img class="card-img-top" alt="kec3" src="../images/c++.jpg" width="294px" height="98px" />
-						<div class="card-block">
-							<h5 class="card-title">
-								C++远征之起航篇
-							</h5>
-							<p style="width: 98%;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;" >
-								C++亮点尽在其中，本课程是在C语言基础上的一个延伸，得以升华
-							</p>
-							<p align="center">
-								<a class="btn btn-primary" href="#">参与学习</a> 
-							</p>
+					<div class="col-md-3">
+						<div class="card">
+							<img class="card-img-top" alt="kec3" src="../images/c++.jpg" width="294px" height="98px" />
+							<div class="card-block">
+								<h5 class="card-title">
+									<%=list.get(2).getName() %>
+								</h5>
+								<p style="width: 98%;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;" >
+									<%=list.get(2).getInto() %>
+								</p>
+								<p align="center">
+									<a class="btn btn-primary" href="#">参与学习</a> 
+								</p>
+							</div>
 						</div>
 					</div>
-				</div>
-				<div class="col-md-3">
-					<div class="card">
-						<img class="card-img-top" alt="kec3" src="../images/c++.jpg" width="294px" height="98px" />
-						<div class="card-block">
-							<h5 class="card-title">
-								C++远征之起航篇
-							</h5>
-							<p style="width: 98%;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">
-								C++亮点尽在其中，本课程是在C语言基础上的一个延伸，得以升华
-							</p>
-							<p align="center">
-								<a class="btn btn-primary" href="#">参与学习</a> 
-							</p>
+					<div class="col-md-3">
+						<div class="card">
+							<img class="card-img-top" alt="kec3" src="../images/python.jpg" width="294px" height="98px" />
+							<div class="card-block">
+								<h5 class="card-title">
+									<%=list.get(3).getName() %>
+								</h5>
+								<p style="width: 98%;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">
+									<%=list.get(3).getInto() %>
+								</p>
+								<p align="center">
+									<a class="btn btn-primary" href="#">参与学习</a> 
+								</p>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-</div>
 </div>
 <script type="text/javascript">
 $('.carousel').carousel({
