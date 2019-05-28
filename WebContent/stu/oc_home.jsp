@@ -175,9 +175,10 @@
 		<div class="row">
 			<div class="col-md-12">
 				<div class="row">
+				
 					<div class="col-md-3">
 						<div class="card">
-							<img class="card-img-top" alt="kec1" src="../images/c.jpg" width="294px" height="98px" />
+							<img class="card-img-top" alt="kec1" src=<%=list.get(0).getImg() %> width="294px" height="98px" />
 							<div class="card-block">
 								<h5 class="card-title">
 									<%=list.get(0).getName() %>
@@ -193,7 +194,7 @@
 					</div>
 					<div class="col-md-3">
 						<div class="card">
-							<img class="card-img-top" alt="kec2" src="../images/sf.jpg" width="294px" height="98px" />
+							<img class="card-img-top" alt="kec2" src=<%=list.get(1).getImg() %> width="294px" height="98px" />
 							<div class="card-block">
 								<h5 class="card-title">
 									<%=list.get(1).getName() %>
@@ -209,7 +210,7 @@
 					</div>
 					<div class="col-md-3">
 						<div class="card">
-							<img class="card-img-top" alt="kec3" src="../images/c++.jpg" width="294px" height="98px" />
+							<img class="card-img-top" alt="kec3" src=<%=list.get(2).getImg() %> width="294px" height="98px" />
 							<div class="card-block">
 								<h5 class="card-title">
 									<%=list.get(2).getName() %>
@@ -225,7 +226,7 @@
 					</div>
 					<div class="col-md-3">
 						<div class="card">
-							<img class="card-img-top" alt="kec3" src="../images/python.jpg" width="294px" height="98px" />
+							<img class="card-img-top" alt="kec3" src=<%=list.get(3).getImg() %> width="294px" height="98px" />
 							<div class="card-block">
 								<h5 class="card-title">
 									<%=list.get(3).getName() %>
