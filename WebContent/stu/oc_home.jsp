@@ -167,15 +167,80 @@
 <%List<course> list=new ArrayList<course>(); 
 	list=DaoFactory.getcourseDaoInstance().checkCourse();
 	int size=list.size();
+	int container_flu=size/4;
+	int surplus_record=size%4;
 	
 %>
 <div class="wrapper1">	
 	<h4 align="center"><em>其他课程</em></h4>	
-	<div class="container-fluid">
+	<%if(surplus_record==0){
+		for(int i=0;i<container_flu;i++){%>
+		
+			<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="row">
+			<% for(int j=0;j<size;j++){%>
+				<div class="col-md-3">
+						<div class="card">
+							<img class="card-img-top" alt="kec1" src=<%=list.get(j).getImg() %> width="294px" height="98px" />
+							<div class="card-block">
+								<h5 class="card-title">
+									<%=list.get(j).getName() %>
+								</h5>
+								<p style="width: 98%;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">
+									<%=list.get(j).getInto() %>
+								</p>
+								<p align="center">
+									<a class="btn btn-primary" href="#">参与学习</a> 
+								</p>
+							</div>
+						</div>
+					</div>
+			<%}%>
+					</div>
+				</div>
+			</div>
+			</div>
+		<%}
+	}else{
+		for(int i=0;i<container_flu+1;i++){%>
+		<br>
+			<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="row">
+			<% for(int j=0;j<size;j++){%>
+				<div class="col-md-3">
+						<div class="card">
+							<img class="card-img-top" alt="kec1" src=<%=list.get(j).getImg() %> width="294px" height="98px" />
+							<div class="card-block">
+								<h5 class="card-title">
+									<%=list.get(j).getName() %>
+								</h5>
+								<p style="width: 98%;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">
+									<%=list.get(j).getInto() %>
+								</p>
+								<p align="center">
+									<a class="btn btn-primary" href="#">参与学习</a> 
+								</p>
+							</div>
+						</div>
+					</div>
+			<%}%>
+					</div>
+				</div>
+			</div>
+			</div>
+		<%}
+	}
+	
+	%>
+	<!-- 一个container-fluid开始 -->
+	<%-- <%-- <div class="container-fluid">
 		<div class="row">
 			<div class="col-md-12">
 				<div class="row">
-				
 					<div class="col-md-3">
 						<div class="card">
 							<img class="card-img-top" alt="kec1" src=<%=list.get(0).getImg() %> width="294px" height="98px" />
@@ -242,7 +307,8 @@
 					</div>
 				</div>
 			</div>
-		</div>
+		</div> --%>
+		<!-- 一个container-fluid结束 -->
 	</div>
 </div>
 <script type="text/javascript">
