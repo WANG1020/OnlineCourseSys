@@ -44,4 +44,39 @@ public class courseDaoImpl implements courseDao{
 		return all;//返回all
 	}
 
+	@Override
+	public List<course> searchAllCourseByName(String name) throws Exception {
+		// TODO Auto-generated method stub
+		List all=new ArrayList();//新建List all接收查询结果
+		String sql = "SELECT course.name,course.intro,course.Deintro,course.teacher,course.img\r\n"+ 
+				"FROM electivecourse  INNER JOIN course  ON electivecourse.class_name=course.name\r\n"+ 
+				"WHERE electivecourse.name=?" ;
+		PreparedStatement pstmt=null;
+		DataBaseConnection dbc=null;
+		dbc=new DataBaseConnection();
+		try
+		{
+			pstmt=dbc.getConnection().prepareStatement(sql);
+			pstmt.setString(1,name);
+			ResultSet rs=pstmt.executeQuery();
+			System.out.println("这是一个测试");
+			while(rs.next()){
+				course tcourse=new course();
+				tcourse.setName(rs.getString(1));
+				tcourse.setInto(rs.getString(2));
+				tcourse.setDeintro(rs.getString(3));
+				tcourse.setTeacher(rs.getString(4));
+				tcourse.setImg(rs.getString(5));
+				all.add(tcourse);
+			}
+			rs.close();
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			dbc.close();
+		}
+		return all;//返回all
+	}
+
 }
