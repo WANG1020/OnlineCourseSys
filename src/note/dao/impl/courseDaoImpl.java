@@ -2,6 +2,7 @@ package note.dao.impl;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -59,7 +60,6 @@ public class courseDaoImpl implements courseDao{
 			pstmt=dbc.getConnection().prepareStatement(sql);
 			pstmt.setString(1,name);
 			ResultSet rs=pstmt.executeQuery();
-			System.out.println("这是一个测试");
 			while(rs.next()){
 				course tcourse=new course();
 				tcourse.setName(rs.getString(1));
@@ -78,5 +78,67 @@ public class courseDaoImpl implements courseDao{
 		}
 		return all;//返回all
 	}
+
+	@Override
+	public boolean existCourse(String courseName, String name) throws Exception {
+		// TODO Auto-generated method stub
+		boolean flag=false;
+		String sql="SELECT NAME,class_name FROM electivecourse WHERE NAME=? AND class_name=?";
+		PreparedStatement pstmt=null;
+		DataBaseConnection dbc=null;
+		dbc=new DataBaseConnection();
+		try {
+			pstmt=dbc.getConnection().prepareStatement(sql);
+			pstmt.setString(1, name);
+			pstmt.setString(2, courseName);
+			ResultSet rs=pstmt.executeQuery();
+			if(rs.next())
+			{
+				flag=true;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			dbc.close();
+		}
+		return flag;
+	}
+
+	@Override
+	public List<course> studyCourse(String course_name) throws Exception {
+		// TODO Auto-generated method stub
+		List all=new ArrayList();//新建List all接收查询结果
+		String sql = "SELECT id,name,intro,Deintro,teacher,img FROM course where name=?" ;
+		PreparedStatement pstmt=null;
+		DataBaseConnection dbc=null;
+		dbc=new DataBaseConnection();
+		try
+		{
+			pstmt=dbc.getConnection().prepareStatement(sql);
+			pstmt.setString(1, course_name);
+			ResultSet rs=pstmt.executeQuery();
+			while(rs.next()){
+				course tCourse=new course();
+				tCourse.setId(rs.getInt(1));
+				tCourse.setName(rs.getString(2));
+				tCourse.setInto(rs.getString(3));
+				tCourse.setDeintro(rs.getString(4));
+				tCourse.setTeacher(rs.getString(5));
+				tCourse.setImg(rs.getString(6));
+				all.add(tCourse);
+			}
+			rs.close();
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			dbc.close();
+		}
+		
+		return all;//返回all
+	}
+
+	
 
 }

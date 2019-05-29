@@ -11,6 +11,7 @@
 <title>OnlineCourse-首页</title>
 <link href="../bootstrap4/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" href="../dist/css/lightbox.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"><!--内置图标，未使用，待完成  -->
 <script type="text/javascript" src="../js/jquery-3.4.0.js"></script>
 <script type="text/javascript" src="../bootstrap4/js/bootstrap.min.js"></script>
 <script src="../dist/js/lightbox-plus-jquery.min.js"></script>
@@ -89,42 +90,7 @@
 					</nav>
 				</div>
 			</div>
-			<%if(!name.equals("未登录")){ %>
-				<h4 class="h4wra" align="center"><em>你的课程</em></h4>	
-				<%List<course> list=new ArrayList<course>(); 
-					list=DaoFactory.getcourseDaoInstance().searchAllCourseByName(name);
-					System.out.println("登录人姓名："+name);
-					System.out.println("登录的人选的课程数："+list.size());
-				%>
-				<div class="container-fluid">
-				<div class="row">
-				<div class="col-md-12">
-				<div class="row">
-				<% for(int j=0;j<list.size();j++){%>
-					<div class="col-md-3">
-							<div class="card">
-								<img class="card-img-top" alt="kec1" src=<%=list.get(j).getImg() %> width="294px" height="98px" />
-								<div class="card-block">
-									<h5 class="card-title">
-										<%=list.get(j).getName() %>
-									</h5>
-									<p class="p1">
-										<%=list.get(j).getInto() %>
-									</p>
-								</div>
-							</div>
-						</div>
-						<%}%>
-						</div>
-					</div>
-				</div>
-				</div>
-		</div>
-		<div style="width:100%;height:230px;overflow:visible">
-		
-		</div>
-<%}else{ %>
-<h4 class="h4wra" align="center"><em>推荐课程</em></h4>	
+			<h4 class="h4wra" align="center"><em>推荐课程</em></h4>	
 <div class="row">
 <div class="col-md-4">
 	<div id="card-616186">
@@ -214,7 +180,41 @@
 	</div>
 </div>
 </div>
-<%} %>
+	<%if(!name.equals("未登录")){ %>
+		<h4 class="h4wra" align="center"><em>你的课程</em></h4>	
+		<%List<course> list=new ArrayList<course>(); 
+			list=DaoFactory.getcourseDaoInstance().searchAllCourseByName(name);
+			System.out.println("登录人姓名："+name);
+			System.out.println("登录的人选的课程数："+list.size());
+		%>
+		<div class="container-fluid">
+		<div class="row">
+		<div class="col-md-12">
+		<div class="row">
+		<% for(int j=0;j<list.size();j++){%>
+			<div class="col-md-3">
+					<div class="card">
+						<img class="card-img-top" alt="kec1" src=<%=list.get(j).getImg() %> width="294px" height="98px" />
+						<div class="card-block">
+							<h5 class="card-title">
+								<%=list.get(j).getName() %>
+							</h5>
+							<p class="p1">
+								<%=list.get(j).getInto() %>
+							</p>
+						</div>
+					</div>
+				</div>
+				<%}%>
+				</div>
+			</div>
+		</div>
+		</div>
+</div>
+<div style="width:100%;height:230px;overflow:visible">
+
+</div>
+<%}%>
 </br></br>
 <%List<course> list=new ArrayList<course>(); 
 	list=DaoFactory.getcourseDaoInstance().checkCourse();
@@ -235,13 +235,22 @@
 						<div class="card-block">
 							<h5 class="card-title">
 								<%=list.get(j).getName() %>
+								<%String course_name=list.get(j).getName(); %>
 							</h5>
 							<p class="p1">
 								<%=list.get(j).getInto() %>
 							</p>
-							<p align="center">
-								<a class="btn btn-primary" href="taParInStu.jsp">参与学习</a> 
-							</p>
+							<%
+								if(DaoFactory.getcourseDaoInstance().existCourse(list.get(j).getName(), name)){%>
+									<p align="center">
+										<a class="btn btn-primary" href="stuCourse.jsp">进入学习</a> 
+									</p>
+								<%}else{
+							%>
+								<p align="center">
+									<a class="btn btn-primary" href=taParInStu.jsp?course_name=<%=course_name %>>参与学习</a> 
+								</p>
+							<%} %>
 						</div>
 					</div>
 				</div>

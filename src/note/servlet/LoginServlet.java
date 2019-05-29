@@ -67,7 +67,7 @@ public class LoginServlet extends HttpServlet {
 			if(DaoFactory.getuserDaoInstance().login(user)&&checkcode.equals(rightcode)){			
 				number++;
 				HttpSession hs=request.getSession(true);
-				hs.setMaxInactiveInterval(60);
+				hs.setMaxInactiveInterval(160);
 				hs.setAttribute("username",name);
 				hs.setAttribute("upass", password);
 				//flag为1的话为true,为0的话是false

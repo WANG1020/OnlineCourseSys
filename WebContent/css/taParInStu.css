@@ -1,0 +1,22 @@
+@CHARSET "UTF-8";
+.wra1{
+	background:#f4f4f4;:
+}
+.header{
+	padding-top:20px;
+	bakcground:#ffffff;
+	border:1px;
+	border-radius:12px;
+}
+.divul{
+	width:100%;
+	height:40px;
+}
+.ul1{ 
+	list-style-type:none;
+}
+.li1 {
+	margin-right:80px;
+  	float: left;
+  	font-size:22px;
+}
