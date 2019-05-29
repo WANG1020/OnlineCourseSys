@@ -58,7 +58,8 @@
 								<li class="nav-item dropdown">
 									 <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown"><%=name%>></a>
 									<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-										 <a class="dropdown-item" href="#">我的主页</a> <a class="dropdown-item" href="#">个人资料设置</a>
+										 <a class="dropdown-item" href="#">我的主页</a> <a class="dropdown-item" href="#">发布课程</a>
+										 <a class="dropdown-item" href="#">课程管理</a><a class="dropdown-item" href="#">个人资料设置</a>
 										 <a class="dropdown-item" href="#">我的信息</a>
 										<div class="dropdown-divider">
 										</div> <a class="dropdown-item" href="login.html">退出</a>
@@ -170,7 +171,7 @@
 		<h4 class="h4wra" align="center"><em>你的课程</em></h4>	
 		<%List<course> list=new ArrayList<course>(); 
 			list=DaoFactory.getcourseDaoInstance().searchAllCourseByName(name);
-			System.out.println("登录人姓名："+name);/*测试用*/
+			System.out.println("登录人姓名："+name);
 			System.out.println("登录的人选的课程数："+list.size());
 		%>
 		<div class="container-fluid">
@@ -229,7 +230,7 @@
 							<%
 								if(DaoFactory.getcourseDaoInstance().existCourse(list.get(j).getName(), name)){%>
 									<p align="center">
-										<a class="btn btn-primary" href=containStu.jsp?course_name=<%=course_name %>>进入学习</a> 
+										<a class="btn btn-primary" href="stuCourse.jsp">进入学习</a> 
 									</p>
 								<%}else{
 							%>

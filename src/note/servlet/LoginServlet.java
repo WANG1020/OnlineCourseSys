@@ -67,14 +67,18 @@ public class LoginServlet extends HttpServlet {
 			if(DaoFactory.getuserDaoInstance().login(user)&&checkcode.equals(rightcode)){			
 				number++;
 				HttpSession hs=request.getSession(true);
-				hs.setMaxInactiveInterval(160);
+				hs.setMaxInactiveInterval(80);
 				hs.setAttribute("username",name);
 				hs.setAttribute("upass", password);
 				//flag为1的话为true,为0的话是false
 				hs.setAttribute("flag", flag);
 				/*request.getRequestDispatcher("stu/oc_home.jsp").forward(request, response);*/
 				hs.setAttribute("fkNumber",number);
-				response.sendRedirect("stu/oc_home.jsp");
+				if(flag.equals("0")){
+					response.sendRedirect("stu/oc_home.jsp");
+				}else if(flag.equals("1")){
+					response.sendRedirect("teacher/oc_home.jsp");
+				}
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

@@ -1,4 +1,4 @@
-<%@page import="java.util.List"%>
+<%@ page import="java.util.List" %>
 <%@page import="note.vo.course"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page import="note.factory.DaoFactory" %>
@@ -8,8 +8,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>OnlineCourse-参与学习</title>
-<link rel="stylesheet" type="text/css" href="../css/taParInStu.css">
+<title>OnlineCourse-继续学习</title>
+<link rel="stylesheet" type="text/css" href="../css/containStu.css">
 <link href="../bootstrap4/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" href="../dist/css/lightbox.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"><!--内置图标，未使用，待完成  -->
@@ -97,7 +97,7 @@ if(!name.equals("未登录")){%>
 				<div class="col-md-2">
 				<br>
 					<a></a><button type="button" class="btn btn-outline-info">
-						开始学习
+						继续学习
 					</button></a>
 				</div>
 				<div class="col-md-1">

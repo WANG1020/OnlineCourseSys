@@ -1,0 +1,18 @@
+@CHARSET "UTF-8";
+.wra1{
+	background:#f4f4f4;
+}
+.wrapper1 h4{
+	background-color:#eeeeee;
+}
+.h4wra{
+	background-color:#eeeeee;
+}
+.p1{
+	width: 98%;
+	overflow: hidden;
+	color:#c4c4c4;
+	font-size:12px;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
