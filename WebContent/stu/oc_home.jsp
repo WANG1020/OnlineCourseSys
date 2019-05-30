@@ -58,7 +58,7 @@
 								<li class="nav-item dropdown">
 									 <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown"><%=name%>></a>
 									<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-										 <a class="dropdown-item" href="#">我的主页</a> <a class="dropdown-item" href="#">个人资料设置</a>
+										 <a class="dropdown-item" href="#">我的主页</a> <a class="dropdown-item" href="#">个人信息设置</a>
 										 <a class="dropdown-item" href="#">我的信息</a>
 										<div class="dropdown-divider">
 										</div> <a class="dropdown-item" href="login.html">退出</a>
@@ -179,19 +179,21 @@
 		<div class="row">
 		<% for(int j=0;j<list.size();j++){%>
 			<div class="col-md-3">
-					<div class="card">
-						<img class="card-img-top" alt="kec1" src=<%=list.get(j).getImg() %> width="294px" height="98px" />
-						<div class="card-block">
-							<h5 class="card-title">
-								<%=list.get(j).getName() %>
-							</h5>
-							<p class="p1">
-								<%=list.get(j).getInto() %>
-							</p>
-						</div>
+				<div class="card">
+					<a href=containStu.jsp?course_name=<%=list.get(j).getName() %>>
+					<img class="card-img-top" alt="kec1" src=<%=list.get(j).getImg() %> width="294px" height="98px" /></a>
+					<div class="card-block">
+						<h5 class="card-title">
+							<%=list.get(j).getName() %>
+						</h5>
+						<p class="p1">
+							<%=list.get(j).getInto() %>
+						</p>
 					</div>
 				</div>
+			</div>
 				<%}%>
+				
 				</div>
 			</div>
 		</div>
