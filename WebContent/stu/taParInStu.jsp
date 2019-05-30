@@ -1,3 +1,4 @@
+<!-- 参与学习 -->
 <%@page import="java.util.List"%>
 <%@page import="note.vo.course"%>
 <%@page import="java.util.ArrayList"%>
@@ -38,6 +39,9 @@ if(!name.equals("未登录")){%>
 					</button>
 					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 						<ul class="navbar-nav">
+							<li>
+								<img src="../images/icon.png" width="170px" height="40px">
+							</li>
 							<li class="nav-item active">
 									 <a class="nav-link" href="oc_home.jsp">首页<span class="sr-only">(current)</span></a>
 								</li>
@@ -57,7 +61,7 @@ if(!name.equals("未登录")){%>
 							<li class="nav-item dropdown">
 								 <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown"><%=name%>></a>
 								<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-									 <a class="dropdown-item" href="#">我的主页</a> <a class="dropdown-item" href="#">个人资料设置</a>
+									 <a class="dropdown-item" href="#">我的主页</a> <a class="dropdown-item" href="ManAccoNum.jsp">账号管理</a>
 									 <a class="dropdown-item" href="#">我的信息</a>
 									<div class="dropdown-divider">
 									</div> <a class="dropdown-item" href="login.html">退出</a>

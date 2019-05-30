@@ -1,0 +1,52 @@
+@CHARSET "UTF-8";
+.wra1{
+	background:#f4f4f4;
+}
+.divul{
+	margin-top:20px;
+	margin-left:60px;
+	width:90%;
+	height:100%;
+	background:white;
+}
+.ul1{ 
+	list-style-type:none;
+}
+.li1 {
+	margin-right:40px;
+  	float: left;
+  	font-size:20px;
+}
+.hrwra{
+	padding-top:29px;
+}
+.divwra1{
+	margin-top:10px;
+	margin-left:45px;
+	background:#f4f4f4;
+	width:60%;
+	height:450px;
+}
+.infoLabel {
+    width: 85px;
+    height: 35px;
+    background: #008573;	
+    line-height: 26px;
+    text-align: center;
+    font-size: 14px;
+    color: white;
+}
+.personPic {
+    width: 130px;
+    height: 130px;
+    position: relative;
+    margin-left: 28px;
+}
+.awra1{
+	background-color:rgba(0,0,0,0.2);
+	color:white;
+	font-size:10px;
+	position: absolute;
+	top:112px;
+	margin-left:80px;
+}

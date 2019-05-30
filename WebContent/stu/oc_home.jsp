@@ -1,3 +1,4 @@
+<!--  主页面   -->
 <%@page import="java.util.List"%>
 <%@page import="note.vo.course"%>
 <%@page import="java.util.ArrayList"%>
@@ -31,6 +32,9 @@
 						</button> 
 						<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 							<ul class="navbar-nav">
+								<li>
+									<img src="../images/icon.png" width="170px" height="40px">
+								</li>
 								<li class="nav-item active">
 									 <a class="nav-link" href="oc_home.jsp">首页<span class="sr-only">(current)</span></a>
 								</li>
@@ -58,8 +62,8 @@
 								<li class="nav-item dropdown">
 									 <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown"><%=name%>></a>
 									<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-										 <a class="dropdown-item" href="#">我的主页</a> <a class="dropdown-item" href="#">个人信息设置</a>
-										 <a class="dropdown-item" href="#">我的信息</a>
+										 <a class="dropdown-item" href="#">我的主页</a> <a class="dropdown-item" href="ManAccoNum.jsp">账号管理</a>
+										 <a class="dropdown-item" href="#">消息中心</a>
 										<div class="dropdown-divider">
 										</div> <a class="dropdown-item" href="login.html">退出</a>
 									</div>
@@ -76,7 +80,7 @@
 					</nav>
 				</div>
 			</div>
-			<h4 class="h4wra" align="center"><em>推荐课程</em></h4>	
+<h4 class="h4wra" align="center"><em>推荐课程</em></h4>	
 <div class="row">
 <div class="col-md-4">
 	<div id="card-616186">
@@ -219,7 +223,8 @@
 		<% for(int j=0;j<size;j++){%>
 			<div class="col-md-3">
 					<div class="card">
-						<img class="card-img-top" alt="kec1" src=<%=list.get(j).getImg() %> width="294px" height="98px" />
+						<a  href=containStu.jsp?course_name=<%=list.get(j).getName() %>>
+						<img class="card-img-top" alt="kec1" src=<%=list.get(j).getImg() %> width="294px" height="98px" /></a>
 						<div class="card-block">
 							<h5 class="card-title">
 								<%=list.get(j).getName() %>
