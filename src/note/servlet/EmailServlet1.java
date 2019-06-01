@@ -16,18 +16,17 @@ import javafx.scene.control.Alert;
 import note.factory.DaoFactory;
 import note.vo.user;
 import sun.security.action.PutAllAction;
-
 /**
- * Servlet implementation class EmailServlet
+ * Servlet implementation class EmailServlet1
  */
-@WebServlet("/EmailServlet")
-public class EmailServlet extends HttpServlet {
+@WebServlet("/EmailServlet1")
+public class EmailServlet1 extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public EmailServlet() {
+    public EmailServlet1() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -45,29 +44,24 @@ public class EmailServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		String email=request.getParameter("email");
 		String name=request.getParameter("name");
-		String active=request.getParameter("active");
 		user user=new user();
 		user.setName(name);
-		user.setActive(active);
-		System.out.println("name为"+name);
-		System.out.println("active为"+active);
+		user.setEmail(email);
+		
+		System.out.println("姓名为："+name);
+		System.out.println("\n邮箱为："+email);
 		
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out=response.getWriter();
-		
 		out.println("<html>");
 		out.println("<body><center><h3>");
 		try {
 			if(DaoFactory.getuserDaoInstance().checkUserByName(name)){
-				if(DaoFactory.getuserDaoInstance().checkUserByName1(user).getActive().equals(active)){
-					/*JOptionPane.showMessageDialog(null, 注册);*/
-					DaoFactory.getuserDaoInstance().updateflag(name);
-					out.print("账号激活成功！<a href='http://localhost:8086/OnlineCourse/stu/login.html'>请登录</a>");
-				}else{
-					out.print("账号已激活，链接失效！<a href='http://localhost:8086/OnlineCourse/stu/login.html'>请登录</a>");
-				}
+				DaoFactory.getuserDaoInstance().updateUserEmail(user);
+				out.print("账号绑定成功！<a href='http://localhost:8086/OnlineCourse/stu/login.html'>请登录</a>");
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

@@ -45,8 +45,26 @@
 .awra1{
 	background-color:rgba(0,0,0,0.2);
 	color:white;
-	font-size:10px;
+	font-size:8px;
 	position: absolute;
-	top:112px;
+	top:106px;
 	margin-left:80px;
+	width:60px;
+	overflow: hidden;"
+}
+.clearfix{
+	clear: both;
+	margin-top:12px;
+}
+.liwra1{
+	margin-top:46px;
+	padding-left:26px;
+}
+.inputwra{
+	margin-left:90px;
+	margin-top:-23px;
+}
+.inputwra1{
+	margin-top:12px;
+	padding-left:120px;
 }

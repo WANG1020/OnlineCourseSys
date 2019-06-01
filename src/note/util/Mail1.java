@@ -19,8 +19,8 @@ import note.vo.user;
  * 使用JavaMail发送邮件
  *
  */
-public class Mail {
-	public Mail(user  user) {
+public class Mail1 {
+	public Mail1(user  user) {
 		try {
 			// 获得属性，并生成Session对象
 			Properties props = new Properties();
@@ -41,15 +41,12 @@ public class Mail {
 			// 设置收信人地址
 			message.setRecipient(Message.RecipientType.TO, new InternetAddress(user.getEmail()));
 			// 设置e-mail标题
-			message.setSubject("您好！感谢您注册！");
+			message.setSubject("您好！请绑定你的账户--OnlineCourse！");
 			// 设置e-mail发送时间
 			message.setSentDate(new Date());
 			// 设置e-mail内容			
 			message.setContent(user.getName()+"：请经常访问本网站！" +
-					"  <br><a href='http://localhost:8086/OnlineCourse/EmailServlet?name="+user.getName()+"&active="+user.getActive()+"'>请点击激活帐号</a>", "text/html;charset=UTF-8");
-			//message.setContent(person.getName()+"：恭喜您注册成功！请经常访问本网站！" +
-			//		"  <br><script type='text/javascript'>function goToClient(){window.location.href='verify.jsp?id="+person.getId()+";} </script>"+ 
-            //"<a href='#' onclick='javascript:goToClient();'>请点击激活帐号</a> ", "text/html;charset=gbk");
+					"  <br><a href='http://localhost:8086/OnlineCourse/EmailServlet1?email="+user.getEmail()+"&name="+user.getName()+"'>请点击绑定帐号</a>", "text/html;charset=UTF-8");
 			// 保存对于Email.的修改
 			message.saveChanges();
 			// 根据Session生成Transport对象

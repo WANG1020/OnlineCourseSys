@@ -100,7 +100,7 @@ if(!name.equals("未登录")){%>
 				</div>
 				<div class="col-md-2">
 				<br>
-					<a></a><button type="button" class="btn btn-outline-info">
+					<a><button type="button" class="btn btn-outline-info">
 						开始学习
 					</button></a>
 				</div>

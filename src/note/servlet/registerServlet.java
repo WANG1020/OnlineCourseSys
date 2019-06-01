@@ -8,7 +8,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.swing.JOptionPane;
 
 import note.factory.DaoFactory;
 import note.util.Mail;
@@ -72,7 +71,6 @@ public class registerServlet extends HttpServlet {
 				int i=email.indexOf("@");
 				out.println("注册成功！邮件将发送至您的邮箱");
 				out.println("<a href='http://mail.'+email.substring(i+1)+''>点击发送邮件</a>");
-				/*JOptionPane.showMessageDialog(null, "插入成功！");*/
 				System.out.println("验证成功！");
 			}
 		}catch (Exception e) {
