@@ -1,28 +1,28 @@
 <!DOCTYPE html>
 <html>
 <head>
-<!-- teacher -->
+<!-- stu -->
 <meta http-equiv='Content-Type' content='text/html; charset=UTF-8'>
 <title>OnlineCourse</title>
 <link rel="stylesheet" type="text/css" href="../css/login1.css">
 <script>
 function check_admin(form)
 {
-	if(form.username.value=="")
+	if(form.username.value==""||form.username.value.length<=0)
 	{
-		alert("请输入用户账号!");
+		document.getElementById("warning1").style.display="block";
 		form.name.focus();
 		return false;
 	}
-	if(form.password.value=="")
+	if(form.password.value==""||form.password.value.length<=0)
 	{
-		alert("请输入用户密码!");
+		document.getElementById("warning1").style.display="block";
 		form.password.focus();
 		return false;
 	}
-	if (form.check.value=="")
+	if (form.check.value==""||form.check.value.length<=0)
 	{
-		alert("验证码不正确，请重新输入！");
+		document.getElementById("warning1").style.display="block";
 		form.verify.focus();
 		return false;
 	}
@@ -31,26 +31,53 @@ function check_admin(form)
 </script>
 </head>
 <body>
-<div class="header">
-	<h4>OnlineCourse在线学习</h4>
+<div class="header" style="background:#f4f4f4;">
+	<img src="../images/icon.png" width="170px" height="40px">
 </div>
 <div class="div1">
-<form  class="wra1" action="../LoginServlet" method="post" onSubmit="return check_admin(this);">
+<form  class="wra1" action="../LoginServlet" method="post" onSubmit="return check_admin(this)">
 	<table rules=none cellspacing=0  align="center" width="400px" height="300px">
 		<tr class="tr1">
 			<th colspan="4" align="center">OnlineCourse-教师登录</th>
 		</tr>
 		<tr>
-			<td colspan="4" align="center">&nbsp;<input class="input1" type="text" name="username" id="username" placeholder="请输入账号" ></td>
+			<td colspan="4" align="center">&nbsp;
+				<input class="input1" type="text" name="username" id="username" placeholder="请输入账号" >
+			</td>
+		</tr>
+		<tr id="warning1" style="display:none;">
+			<td>
+				<span style="color:#F00; font-weight:bold;font-size:10px">此项为必填项</span>	
+			</td>
 		</tr>
 		<tr>
-			<td colspan="4" align="center">&nbsp;<input class="input1" type="password" name="password" id="password" placeholder="请输入密码"></td>
+			<td colspan="4" align="center">&nbsp;<input class="input1" type="password" name="password" id="password" placeholder="请输入密码" ></td>
+		</tr>
+		<tr id="warning2" style="display:none;">
+			<td>
+				<span style="color:#F00; font-weight:bold;font-size:10px">此项为必填项</span>	
+			</td>
 		</tr>
 		<tr>
 	    	<td colspan="4" align="center">&nbsp;<img border=0 src="verifyCode.jsp"></td>
 		</tr>
 		<tr>
 	    	<td colspan="4" align="center">&nbsp;<input  class="input1" type="text" name="check" id="check" placeholder="请输入验证码"></td>
+		</tr>
+		<tr id="warning3" style="display:none;">
+			<td>
+				<span style="color:#F00; font-weight:bold;font-size:10px">此项为必填项</span>	
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2" align="center"><label class="label1">
+					<input type="checkbox" /> 记住我
+				</label>
+			</td>
+			<td align="center"><label class="label1">
+					<a href="#">忘记密码</a>
+				</label>
+			</td>
 		</tr>
 		<tr><td><input type="hidden" name="flag" value="1"></td></tr>
 		<tr>

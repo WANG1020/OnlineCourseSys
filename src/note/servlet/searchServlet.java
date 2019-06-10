@@ -11,20 +11,18 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import note.factory.DaoFactory;
-import note.util.Mail1;
-import note.vo.user;
 
 /**
- * Servlet implementation class updateEmailServlet
+ * Servlet implementation class searchServlet
  */
-@WebServlet("/updateEmailServlet")
-public class updateEmailServlet extends HttpServlet {
+@WebServlet("/searchServlet")
+public class searchServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public updateEmailServlet() {
+    public searchServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -47,21 +45,21 @@ public class updateEmailServlet extends HttpServlet {
 		PrintWriter out=response.getWriter();
 		HttpSession session=request.getSession();
 		
-		String newEmail=request.getParameter("email");
+		String search=request.getParameter("search-value");
 		
-		String name=(String)session.getAttribute("username");
-		user user=new user();
-		user.setEmail(newEmail);
-		user.setName(name);
 		try {
-		/*	DaoFactory.getuserDaoInstance().updateUserEmail(user);*/
-			
-			new Mail1(user);
-			
-			int i=newEmail.indexOf("@");
-			out.println("<a href='http://mail.'+newEmail.substring(i+1)+''></a>");
-			out.print("<script language=javascript>alert('邮箱修改成功,绑定邮箱邮件将发送至您的邮箱！！');" +
-					"window.location.href='stu/ManAccoNum.jsp';</script>");
+			HttpSession hs=request.getSession(true);
+			hs.setMaxInactiveInterval(80);
+			hs.setAttribute("search", search);
+			if(!DaoFactory.getcourseDaoInstance().searchCourse(search).isEmpty()&&DaoFactory.getcourseDaoInstance().searchCourse(search).size()>0){
+				out.print("<script language=javascript>" +
+						"window.location.href='stu/search.jsp';</script>");
+				hs.setAttribute("serarch-success-fail","success");
+			}else{
+				out.print("<script language=javascript>" +
+						"window.location.href='stu/search.jsp';</script>");
+				hs.setAttribute("serarch-success-fail","fail");
+			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

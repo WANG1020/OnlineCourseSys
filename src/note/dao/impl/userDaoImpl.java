@@ -182,7 +182,7 @@ public class userDaoImpl implements userDao{
 	public String searchUserPassword(String name) throws Exception {
 		// TODO Auto-generated method stub
 		String bString="";
-		String sql="select password from user wherer name=?";
+		String sql="select password from user where name=?";
 		PreparedStatement psmt=null;
 		DataBaseConnection dbc=null;
 		dbc=new DataBaseConnection();
@@ -221,6 +221,51 @@ public class userDaoImpl implements userDao{
 		}finally {
 			dbc.close();
 		}
+	}
+
+	@Override
+	public void updateUserPassword(String name,String password) throws Exception {
+		// TODO Auto-generated method stub
+		String sql="UPDATE user SET password=? where name=?";
+		PreparedStatement psmt=null;
+		DataBaseConnection dbc=null;
+		dbc=new DataBaseConnection();
+		try{
+			psmt=dbc.getConnection().prepareStatement(sql);
+			psmt.setString(1, password);
+			psmt.setString(2, name);
+			psmt.executeUpdate();
+			psmt.close();
+		}catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}finally {
+			dbc.close();
+		}
+	}
+
+	@Override
+	public String getUserEmail(String name) throws Exception {
+		// TODO Auto-generated method stub
+		String bString="";
+		String sql="select email from user where name=?";
+		PreparedStatement psmt=null;
+		DataBaseConnection dbc=null;
+		dbc=new DataBaseConnection();
+		try{
+			psmt=dbc.getConnection().prepareStatement(sql);
+			psmt.setString(1, name);
+			ResultSet rs=psmt.executeQuery();
+			if(rs.next()){
+				bString=rs.getString(1);
+			}
+		}catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}finally {
+			dbc.close();
+		}
+		return bString;
 	}
 
 }

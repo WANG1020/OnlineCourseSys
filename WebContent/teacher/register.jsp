@@ -85,10 +85,10 @@ function showImg() {
 		<td align="center" colspan="2">&nbsp;<input type="text" name="email" placeholder="输入你的邮箱">*</td>
 	</tr>
 	<tr><td><input type="hidden" id="imgsrc" name="imgsrc" value="img/头像9.png"></td>
-		<td><input type="hidden" id="flag" name="flag" value="1"></td>
+		<td><input type="hidden" id="flag" name="flag" value="0"></td>
 	</tr>
 	<tr>
-		<td  colspan="4" align="center">
+		<td colspan="4" align="center">
 		<input type="submit" value="提交">
 		&nbsp;<input type="reset" value="重填" >
 		&nbsp;<a href="login.html">点此登录！</a>

@@ -1,5 +1,7 @@
 <!-- 继续学习 -->
-<%@ page import="java.util.List" %>
+<%@page import="note.vo.courseDir"%>
+<%@page import="java.util.List"%>
+<%@page import="note.vo.note"%>
 <%@page import="note.vo.course"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page import="note.factory.DaoFactory" %>
@@ -10,7 +12,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>OnlineCourse-继续学习</title>
-<link rel="stylesheet" type="text/css" href="../css/containStu.css">
+<link rel="stylesheet" type="text/css" href="../css/containStu.css" charset=UTF-8>
 <link href="../bootstrap4/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" href="../dist/css/lightbox.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"><!--内置图标，未使用，待完成  -->
@@ -61,7 +63,7 @@ if(!name.equals("未登录")){%>
 							<li class="nav-item dropdown">
 								 <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown"><%=name%>></a>
 								<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-									 <a class="dropdown-item" href="#">我的主页</a> <a class="dropdown-item" href="ManAccoNum.jsp">账号管理</a>
+									 <a class="dropdown-item" href="userHome.jsp">我的主页</a> <a class="dropdown-item" href="ManAccoNum.jsp">账号管理</a>
 									 <a class="dropdown-item" href="#">我的信息</a>
 									<div class="dropdown-divider">
 									</div> <a class="dropdown-item" href="login.html">退出</a>
@@ -100,7 +102,7 @@ if(!name.equals("未登录")){%>
 				</div>
 				<div class="col-md-2">
 				<br>
-					<a></a><button type="button" class="btn btn-outline-info">
+					<a><button type="button" class="btn btn-outline-info">
 						继续学习
 					</button></a>
 				</div>
@@ -110,15 +112,115 @@ if(!name.equals("未登录")){%>
 		</div>
 	</div>
 </div>
-<div class="divul">
-		<ul class="ul1">
-				<li class="li1"><a href="">课程章节</a></li>
-				<li class="li1"><a href="">问答评论</a></li>
-				<li class="li1"><a href="">同学笔记</a></li>
-		</ul>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-8">
+			<div class="tabbable" id="tabs-981611">
+				<ul class="nav nav-tabs">
+					<li class="nav-item">
+						<a class="nav-link active" href="#tab1" data-toggle="tab">课程章节</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#tab2" data-toggle="tab">问答评论</a>
+					</li>
+				</ul>
+				<div class="head">	
+						<%=list.get(0).getDeintro()%>	
+				</div>
+				<br>
+				<div class="tab-content">
+					<div class="tab-pane active divwra"  id="tab1">
+						<!-- 章节目录开始 -->
+						<%
+						int number=DaoFactory.getcourseDirDaoInstance().searchAllChapterNum(list.get(0).getName());
+						if(number!=0){%>
+							<%for(int i=1;i<=number;i++){
+							String chapterString=i+"-";
+							List<courseDir> list2=new ArrayList<courseDir>(); 
+							list2=DaoFactory.getcourseDirDaoInstance().searchByCourseName(list.get(0).getName(),chapterString);
+						%>
+							<h4 style="padding-left:5px;">第<%=list2.get(0).getChapterId() %>章 &nbsp;&nbsp;<%=list2.get(0).getChapterName() %></h4>
+							<ul style="list-style:none;">
+								<%for(int j=0;j<list2.size();j++){ %>
+									<li class="li2" style="height:40px;">
+									<% if(!list2.get(j).getClassHourName().equals("练习题")){%>
+									<a href="study.jsp?flag=0?course_id=<%=list2.get(j).getClassHourId()  %>?course_name=<%=list2.get(j).getClassHourName() %>" style="color:black;">
+										<p><img src="../images/1.png">
+											<span style="padding-left:8px;"><%=list2.get(j).getClassHourId() %>&nbsp;<%=list2.get(j).getClassHourName() %></span>
+											<img style="float:right;padding-right:12px;" src="../images/3.png">
+										</p></a>
+									<%}else{ %>
+										<a href="study.jsp?flag=1?course_id=<%=list2.get(j).getClassHourId()  %>?course_name=<%=list2.get(j).getClassHourName() %>" style="color:black;">
+										<p><img src="../images/2.png">
+											<span style="padding-left:8px;"><%=list2.get(j).getClassHourId() %>&nbsp;<%=list2.get(j).getClassHourName() %></span>
+											<img  style="float:right;padding-right:12px;" src="../images/3.png">
+										</p></a>
+									<%} %>
+									</li>
+								<%}%>
+							</ul>
+							<%} %>
+							<%}else{%>
+							<h4 style="height:300px">亲，老师还没有添加课时噢！</h4>
+							<%} %>
+							<!-- "章节目录"结束 -->
+					</div>
+					<div class="tab-pane" id="tab2">
+						<!-- 问答评论开始 -->
+							<%for(int i=1;i<=number;i++){
+								String chapterString=i+"-";
+								int chaNum=DaoFactory.getcourseDirDaoInstance().searchClaHouNum(list.get(0).getName() , chapterString);
+								for(int j=1;j<=chaNum;j++){/* 例如第一章有五个课时 */
+									/* 比如1-1,2-1，1-2 */
+									String chaString=chapterString+j;
+									/* 1-1到第一章结束的问题，这个开始是1-1的所有问题 */
+									List<note> noteList=new ArrayList<note>(); 
+									noteList=DaoFactory.getnoteDaoInstance().searchQueByName(list.get(0).getName(), chaString);
+									List<note> noteList1=new ArrayList<note>(); 
+									for(int k=0;k<noteList.size();k++){
+										if(noteList.size()!=0){
+											noteList1=DaoFactory.getnoteDaoInstance().findQueAnsByTitle(noteList.get(k).getTitile(), chaString);
+										%>
+										<%String imgString=DaoFactory.getuserDaoInstance().userImg(noteList.get(k).getAuthor()); %>
+											<div class="divwra1">
+												<div class="imgdiv">
+													<p><img src=<%=imgString %> width="50px" height="50px">
+													<span style="padding-left:12px;font-size:22px;"><%=noteList.get(k).getAuthor() %></span></p>
+												</div>
+												<div class="quediv">
+													<p style="padding-left:90px;padding-top:23px;font-size:18px;"><%=noteList.get(k).getTitile() %></p>
+													<%if(noteList.get(k).getContent()!=null){ %>
+														<p style="padding-left:90px;font-size:15px;"><%=noteList.get(k).getContent() %></p>
+													<%} %>
+												</div>
+												<div class="footerdivd">
+													<p><!-- <input class="btn btn-secondary" type="button" value="回答">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; --><%=noteList.get(k).getCourse_name() %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													<%=noteList.get(k).getClassHour_name() %></p>
+												</div>
+												<div class="dropdown">
+													<button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown">
+														Action
+													</button>
+													<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+														 <a class="dropdown-item disabled" href="#">Action</a> <a class="dropdown-item" href="#">Another action</a> <a class="dropdown-item" href="#">Something else here</a>
+													</div>
+												</div>
+											</div>
+										<%}
+									}%>
+								<%}
+								}%>
+						<!-- 问答评论结束 -->
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-4">
+		</div>
+	</div>
 </div>
-<div class="header">	
-	<%=list.get(0).getDeintro()%>	
+</div>
+</div>
 </div>
 <%}else{%>
 	<h4>页面不存在，请查看您的登录信息！</h4>

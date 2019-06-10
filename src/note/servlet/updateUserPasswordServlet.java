@@ -11,20 +11,18 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import note.factory.DaoFactory;
-import note.util.Mail1;
-import note.vo.user;
 
 /**
- * Servlet implementation class updateEmailServlet
+ * Servlet implementation class updateUserPasswordServlet
  */
-@WebServlet("/updateEmailServlet")
-public class updateEmailServlet extends HttpServlet {
+@WebServlet("/updateUserPasswordServlet")
+public class updateUserPasswordServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public updateEmailServlet() {
+    public updateUserPasswordServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -47,21 +45,20 @@ public class updateEmailServlet extends HttpServlet {
 		PrintWriter out=response.getWriter();
 		HttpSession session=request.getSession();
 		
-		String newEmail=request.getParameter("email");
+		String oldPassword=request.getParameter("j-input-origin-pwd");
+		String newPassword=request.getParameter("j-input-new-pwd");
 		
 		String name=(String)session.getAttribute("username");
-		user user=new user();
-		user.setEmail(newEmail);
-		user.setName(name);
+		
 		try {
-		/*	DaoFactory.getuserDaoInstance().updateUserEmail(user);*/
-			
-			new Mail1(user);
-			
-			int i=newEmail.indexOf("@");
-			out.println("<a href='http://mail.'+newEmail.substring(i+1)+''></a>");
-			out.print("<script language=javascript>alert('邮箱修改成功,绑定邮箱邮件将发送至您的邮箱！！');" +
-					"window.location.href='stu/ManAccoNum.jsp';</script>");
+			if(DaoFactory.getuserDaoInstance().searchUserPassword(name).equals(oldPassword)){
+				DaoFactory.getuserDaoInstance().updateUserPassword(name, newPassword);
+				out.print("<script language=javascript>alert('密码修改成功，请重新登录');" +
+						"window.location.href='stu/login.html';</script>");
+			}else{
+				out.print("<script language=javascript>alert('请重新输入你的密码！！与当前密码不匹配！！');" +
+						"window.location.href='stu/ManAccoNum.jsp';</script>");
+			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

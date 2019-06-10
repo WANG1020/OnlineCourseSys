@@ -139,6 +139,77 @@ public class courseDaoImpl implements courseDao{
 		return all;//返回all
 	}
 
+	@Override
+	public List<course> searchCourse(String search) throws Exception {
+		// TODO Auto-generated method stub
+		List all=new ArrayList();//新建List all接收查询结果
+		String sql = "SELECT * FROM course WHERE NAME LIKE ? OR intro LIKE ? " ;
+		PreparedStatement pstmt=null;
+		DataBaseConnection dbc=null;
+		String ssearch='%'+search+'%';
+		dbc=new DataBaseConnection();
+		try
+		{
+			pstmt=dbc.getConnection().prepareStatement(sql);
+			pstmt.setString(1, ssearch);
+			pstmt.setString(2, ssearch);
+			System.out.println("搜索课程的sql语句为\n"+pstmt);
+			ResultSet rs=pstmt.executeQuery();
+			while(rs.next()){
+				course tCourse=new course();
+				tCourse.setId(rs.getInt(1));
+				tCourse.setName(rs.getString(2));
+				tCourse.setInto(rs.getString(3));
+				tCourse.setDeintro(rs.getString(4));
+				tCourse.setTeacher(rs.getString(5));
+				tCourse.setImg(rs.getString(6));
+				all.add(tCourse);
+			}
+			rs.close();
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			dbc.close();
+		}
+		
+		return all;//返回all
+	}
+
+	@Override
+	public List<course> searchThrCourseByName() throws Exception {
+		// TODO Auto-generated method stub
+		List all=new ArrayList();//新建List all接收查询结果
+		String sql = "SELECT id,name,intro,Deintro,teacher,img FROM course limit 0,3" ;
+		PreparedStatement pstmt=null;
+		DataBaseConnection dbc=null;
+		dbc=new DataBaseConnection();
+		try
+		{
+			pstmt=dbc.getConnection().prepareStatement(sql);
+			ResultSet rs=pstmt.executeQuery();
+			while(rs.next()){//有下个就执行，没有跳出
+				course tCourse=new course();//新建临时变量为了接收每一个Note,并逐个将信息“存入”tempnote
+				tCourse.setId(rs.getInt(1));//给每一个tempnote赋值
+				tCourse.setName(rs.getString(2));
+				tCourse.setInto(rs.getString(3));
+				tCourse.setDeintro(rs.getString(4));
+				tCourse.setTeacher(rs.getString(5));
+				tCourse.setImg(rs.getString(6));
+				all.add(tCourse);//将tCourse存入all
+			}
+			rs.close();
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			dbc.close();
+		}
+		
+		return all;//返回all
+	}
+	
+	
 	
 
 }

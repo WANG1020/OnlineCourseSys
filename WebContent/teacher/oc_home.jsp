@@ -1,3 +1,4 @@
+<!--  用户首页   -->
 <%@page import="java.util.List"%>
 <%@page import="note.vo.course"%>
 <%@page import="java.util.ArrayList"%>
@@ -19,9 +20,21 @@
 
 </head>
 <body class="wra1">
+<%
+	HttpSession hSession=request.getSession(true);
+	String name=(String)hSession.getAttribute("username");
+	String img=DaoFactory.getuserDaoInstance().userImg(name);
+	if(name==null){
+		name="未登录";
+	}							
+%>
+<%if(!name.equals("未登录")){%>
+<p style="font-size:10px;color:black;"><%=name %>欢迎你进入系统！</p>
+<%} %>
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-12">
+		<!-- 导航栏开始 -->
 			<div class="row">
 				<div class="col-md-12">
 					<nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -31,36 +44,33 @@
 						</button> 
 						<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 							<ul class="navbar-nav">
+								<li>
+									<img src="../images/icon.png" width="170px" height="40px">
+								</li>
 								<li class="nav-item active">
 									 <a class="nav-link" href="oc_home.jsp">首页<span class="sr-only">(current)</span></a>
 								</li>
 								<li class="nav-item">
-									 <a class="nav-link" href="#">我的题库</a>
+									 <a class="nav-link" href="#myCourse">我的课程</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" href="#AllCourse">所有课程</a>
 								</li>
 							</ul>
-							<form class="form-inline">
-								<input class="form-control mr-sm-2" type="text" /> 
+							<form class="form-inline" action="../searchServlet" method="post"> 
+								<input class="form-control mr-sm-2" type="text" name="search-value"/> 
 								<button class="btn btn-primary my-2 my-sm-0" type="submit">
 									搜索
 								</button>
 							</form>
 							
 							<ul class="navbar-nav ml-md-auto">
-							<%
-								HttpSession hSession=request.getSession(true);
-								String name=(String)hSession.getAttribute("username");
-								String img=DaoFactory.getuserDaoInstance().userImg(name);
-								if(name==null){
-									name="未登录";
-								}							
-							%>
 							<img src=<%=img %> width="40px" height="40px">
 								<li class="nav-item dropdown">
 									 <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown"><%=name%>></a>
 									<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-										 <a class="dropdown-item" href="#">我的主页</a> <a class="dropdown-item" href="#">发布课程</a>
-										 <a class="dropdown-item" href="#">课程管理</a><a class="dropdown-item" href="#">个人资料设置</a>
-										 <a class="dropdown-item" href="#">我的信息</a>
+										 <a class="dropdown-item" href="userHome.jsp">我的主页</a> <a class="dropdown-item" href="ManAccoNum.jsp">账号管理</a>
+										 <a class="dropdown-item" href="#">消息中心</a>
 										<div class="dropdown-divider">
 										</div> <a class="dropdown-item" href="login.html">退出</a>
 									</div>
@@ -77,7 +87,9 @@
 					</nav>
 				</div>
 			</div>
-			<h4 class="h4wra" align="center"><em>推荐课程</em></h4>	
+			<!-- 导航栏结束 -->
+<!--推荐课程开始  -->
+<h4 class="h4wra" align="center"><em>推荐课程</em></h4>	
 <div class="row">
 <div class="col-md-4">
 	<div id="card-616186">
@@ -128,7 +140,7 @@
 			<a href="../images/c.jpg" data-lightbox="example-set" data-title="Click the right half of the image to move forward.">
 			<img class="d-block w-100" alt="Carousel Bootstrap First" src="../images/c.jpg" width="260px" height="200px"/>
 				<div class="carousel-caption">
-					<h4>
+					<h4 align="center">
 						C语言入门
 					</h4>
 					<p>
@@ -140,7 +152,7 @@
 			<a href="../images/sf.jpg" data-lightbox="example-set" data-title="Or press the right arrow on your keyboard.">
 				<img class="d-block w-100" alt="Carousel Bootstrap Second" src="../images/sf.jpg" width="260px" height="200px"/>
 				<div class="carousel-caption">
-					<h4>
+					<h4 align="center">
 						玩转算法和数据结构
 					</h4>
 					<p>
@@ -152,7 +164,7 @@
 			<a href="../images/c++.jpg" data-lightbox="example-set" data-title="Or press the right arrow on your keyboard.">
 				<img class="d-block w-100" alt="Carousel Bootstrap Third" src="../images/c++.jpg" width="260px" height="200px"/>
 				<div class="carousel-caption">
-					<h4>
+					<h4 align="center">
 						C++远征之起航篇
 					</h4>
 					<p>
@@ -167,12 +179,13 @@
 	</div>
 </div>
 </div>
+<!--推荐课结束  -->
 	<%if(!name.equals("未登录")){ %>
-		<h4 class="h4wra" align="center"><em>你的课程</em></h4>	
+		<h4 class="h4wra" align="center" id="myCourse"><em>你的课程</em></h4>	
 		<%List<course> list=new ArrayList<course>(); 
 			list=DaoFactory.getcourseDaoInstance().searchAllCourseByName(name);
-			System.out.println("登录人姓名："+name);
-			System.out.println("登录的人选的课程数："+list.size());
+			System.out.println("登录人姓名："+name);/*测试用*/
+			System.out.println("登录的人选的课程数："+list.size()); 
 		%>
 		<div class="container-fluid">
 		<div class="row">
@@ -180,19 +193,21 @@
 		<div class="row">
 		<% for(int j=0;j<list.size();j++){%>
 			<div class="col-md-3">
-					<div class="card">
-						<img class="card-img-top" alt="kec1" src=<%=list.get(j).getImg() %> width="294px" height="98px" />
-						<div class="card-block">
-							<h5 class="card-title">
-								<%=list.get(j).getName() %>
-							</h5>
-							<p class="p1">
-								<%=list.get(j).getInto() %>
-							</p>
-						</div>
+				<div class="card">
+					<a href=containStu.jsp?course_name=<%=list.get(j).getName() %>>
+					<img class="card-img-top" alt="kec1" src=<%=list.get(j).getImg() %> width="294px" height="98px" /></a>
+					<div class="card-block">
+						<h5 class="card-title" align="center">
+							<%=list.get(j).getName() %>
+						</h5>
+						<p class="p1">
+							<%=list.get(j).getInto() %>
+						</p>
 					</div>
 				</div>
+			</div>
 				<%}%>
+				
 				</div>
 			</div>
 		</div>
@@ -210,7 +225,7 @@
 	int surplus_record=size%4;
 %>
 <div class="wrapper1">	
-	<h4 align="center"><em>所有课程</em></h4>	
+	<h4 align="center" id="AllCourse"><em>所有课程</em></h4>	
 		<div class="container-fluid">
 		<div class="row">
 			<div class="col-md-12">
@@ -218,9 +233,10 @@
 		<% for(int j=0;j<size;j++){%>
 			<div class="col-md-3">
 					<div class="card">
-						<img class="card-img-top" alt="kec1" src=<%=list.get(j).getImg() %> width="294px" height="98px" />
+						<a  href=containStu.jsp?course_name=<%=list.get(j).getName() %>>
+						<img class="card-img-top" alt="kec1" src=<%=list.get(j).getImg() %> width="294px" height="98px" /></a>
 						<div class="card-block">
-							<h5 class="card-title">
+							<h5 class="card-title" align="center">
 								<%=list.get(j).getName() %>
 								<%String course_name=list.get(j).getName(); %>
 							</h5>
@@ -230,7 +246,7 @@
 							<%
 								if(DaoFactory.getcourseDaoInstance().existCourse(list.get(j).getName(), name)){%>
 									<p align="center">
-										<a class="btn btn-primary" href="stuCourse.jsp">进入学习</a> 
+										<a class="btn btn-primary" href=containStu.jsp?course_name=<%=course_name %>>进入学习</a> 
 									</p>
 								<%}else{
 							%>
@@ -247,6 +263,5 @@
 		</div>
 		</div>
 </div>
-</script>
 </body>
 </html>

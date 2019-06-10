@@ -9,9 +9,9 @@ public interface courseDao {
 	
 	public List<course> searchAllCourseByName(String name)throws Exception;
 	public boolean existCourse(String courseName,String name)throws Exception;
-	
+	public List<course> searchThrCourseByName()throws Exception;
 	public  List<course> studyCourse(String course_name)throws Exception;//taParInStu页面引用
 	
-	
+	public List<course> searchCourse(String search)throws Exception;
 	
 }
