@@ -203,6 +203,29 @@ if(!name.equals("未登录")){%>
 									}%>
 								<%}
 								}%>
+								<%List<note> noteList3=new ArrayList<note>();
+								noteList3=DaoFactory.getnoteDaoInstance().findDirQue(list.get(0).getName());
+								for(int j=0;j<noteList3.size();j++){
+								String imgString=DaoFactory.getuserDaoInstance().userImg(noteList3.get(j).getAuthor());
+								%>
+									<div class="divwra1">
+										<div class="imgdiv">
+											<p><img src=<%=imgString %> width="50px" height="50px">
+											<span style="padding-left:12px;font-size:22px;"><%=noteList3.get(j).getAuthor() %></span></p>
+										<p></p>
+										</div>
+										<div class="quediv">
+										<p style="padding-left:90px;padding-top:23px;font-size:18px;"><%=noteList3.get(j).getTitle() %></p>
+											<%if(noteList3.get(j).getContent()!=null){ %>
+												<p style="padding-left:90px;font-size:15px;"><%=noteList3.get(j).getContent() %></p>
+											<%} %>
+										</div>
+										<div class="footerdivd">
+										<p><%=noteList3.get(j).getCourse_name() %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													<%=noteList3.get(j).getClassHour_name() %></p>
+										</div>
+									</div>
+								<%} %>
 								<div class="row">
 									<div class="col-md-6">
 										<form method="post" action="../updateNoteServlet">

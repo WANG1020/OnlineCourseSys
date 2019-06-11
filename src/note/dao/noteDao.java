@@ -9,4 +9,5 @@ public interface noteDao {
 	public List<note> findQueAnsByTitle(String title,String cHString)throws Exception;
 	
 	public void updateNote(note note)throws Exception;
+	public List<note> findDirQue(String name)throws Exception;
 }

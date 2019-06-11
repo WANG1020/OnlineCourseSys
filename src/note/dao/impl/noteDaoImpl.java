@@ -96,7 +96,7 @@ public class noteDaoImpl implements noteDao{
 			pstmt.setString(3, note.getTitle());
 			pstmt.setString(4, note.getAuthor());
 			pstmt.setString(5, note.getContent());
-			pstmt.setString(6, note.getFlag());
+			pstmt.setString(6,"0");
 			pstmt.executeUpdate();
 			pstmt.close();
 		}catch (Exception e) {
@@ -105,6 +105,39 @@ public class noteDaoImpl implements noteDao{
 		}finally {
 			dbc.close();
 		}
+	}
+
+	@Override
+	public List<note> findDirQue(String name) throws Exception {
+		// TODO Auto-generated method stub
+		List notes=new ArrayList();
+		String sql="SELECT * FROM note WHERE classHour_name=? AND flag='0'";
+		PreparedStatement pstmt=null;
+		DataBaseConnection dbc=null;
+		dbc=new DataBaseConnection();
+		try
+		{
+			pstmt=dbc.getConnection().prepareStatement(sql);
+			pstmt.setString(1, name);
+			ResultSet rs=pstmt.executeQuery();
+			while(rs.next()){//有下个就执行，没有跳出
+				note note=new note();
+				note.setCourse_name(rs.getString(2));
+				note.setClassHour_name(rs.getString(3));
+				note.setTitle(rs.getString(4));
+				note.setAuthor(rs.getString(5));
+				note.setContent(rs.getString(6));
+				notes.add(note);
+			}
+			rs.close();
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			dbc.close();
+		}
+		
+		return notes;
 	}
 	
 }

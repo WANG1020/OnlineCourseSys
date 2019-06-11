@@ -62,7 +62,7 @@ public class updateNoteServlet extends HttpServlet {
 		try {
 			DaoFactory.getnoteDaoInstance().updateNote(note);
 			out.print("<script language=javascript>alert('发布成功！');" +
-					"window.location.href='stu/containStu.jsp';</script>");
+					"window.location.href='stu/containStu.jsp?course_name="+course_name+"';</script>");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
