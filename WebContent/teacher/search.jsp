@@ -41,7 +41,7 @@ if(flag.equals("success")){%>
 							 <a class="nav-link" href="#">我的题库</a>
 						</li>
 					</ul>
-					<form class="form-inline" action="../searchServlet" method="post"> 
+					<form class="form-inline" action="../searchServlet?method=tea" method="post"> 
 						<input class="form-control mr-sm-2" type="text" name="search-value"/> 
 						<button class="btn btn-primary my-2 my-sm-0" type="submit">
 							搜索
@@ -61,7 +61,7 @@ if(flag.equals("success")){%>
 							 <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown"><%=name%>></a>
 							<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
 								 <a class="dropdown-item" href="userHome.jsp">我的主页</a> <a class="dropdown-item" href="ManAccoNum.jsp">账号管理</a>
-								 <a class="dropdown-item" href="#">消息中心</a>
+								  <a class="dropdown-item" href="publishingCourses.jsp">发布课程</a><a class="dropdown-item" href="#">消息中心</a>
 								<div class="dropdown-divider">
 								</div> <a class="dropdown-item" href="login.html">退出</a>
 							</div>

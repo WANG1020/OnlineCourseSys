@@ -50,8 +50,8 @@ if(!name.equals("未登录")){%>
 									 <a class="nav-link" href="#">我的题库</a>
 								</li>
 							</ul>
-							<form class="form-inline">
-								<input class="form-control mr-sm-2" type="text" /> 
+							<form class="form-inline" action="../searchServlet?method=stu" method="post"> 
+								<input class="form-control mr-sm-2" type="text" name="search-value"/> 
 								<button class="btn btn-primary my-2 my-sm-0" type="submit">
 									搜索
 								</button>

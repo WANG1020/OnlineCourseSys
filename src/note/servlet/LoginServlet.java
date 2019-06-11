@@ -50,6 +50,7 @@ public class LoginServlet extends HttpServlet {
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out=response.getWriter();
 		
+		String location=request.getParameter("location");
 		String name=request.getParameter("username");
 		String password=request.getParameter("password");
 		String flag=request.getParameter("flag");
@@ -74,9 +75,10 @@ public class LoginServlet extends HttpServlet {
 				hs.setAttribute("flag", flag);
 				/*request.getRequestDispatcher("stu/oc_home.jsp").forward(request, response);*/
 				hs.setAttribute("fkNumber",number);
-				if(flag.equals("0")){
+				if(location.equals("stu")){
 					response.sendRedirect("stu/oc_home.jsp");
-				}else if(flag.equals("1")){
+				}
+				if(location.equals("teacher")){
 					response.sendRedirect("teacher/oc_home.jsp");
 				}
 			}

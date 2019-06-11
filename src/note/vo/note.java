@@ -4,7 +4,7 @@ public class note {
 	private String id;
 	private String course_name;
 	private String classHour_name;
-	private String titile;
+	private String title;
 	private String author;
 	private String content;
 	private String flag;
@@ -41,11 +41,11 @@ public class note {
 	public void setCourse_name(String course_name) {
 		this.course_name = course_name;
 	}
-	public String getTitile() {
-		return titile;
+	public String getTitle() {
+		return title;
 	}
-	public void setTitile(String titile) {
-		this.titile = titile;
+	public void setTitle(String title) {
+		this.title = title;
 	}
 	public String getAuthor() {
 		return author;

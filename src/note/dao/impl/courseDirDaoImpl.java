@@ -107,4 +107,42 @@ public class courseDirDaoImpl implements courseDirDao{
 		return number;
 	}
 
+	@Override
+	public void deleteDir(String name, String id) throws Exception {
+		// TODO Auto-generated method stub
+		String sql="DELETE FROM coursedir WHERE course_name=? AND classHour_id =?";
+		PreparedStatement pstmt=null;
+		DataBaseConnection dbc=null;
+		dbc=new DataBaseConnection();
+		pstmt=dbc.getConnection().prepareStatement(sql);
+		pstmt.setString(1,name);
+		pstmt.setString(2,id);
+		pstmt.executeUpdate();
+	}
+
+	@Override
+	public void insertDir(courseDir courseDir) throws Exception {
+		// TODO Auto-generated method stub
+		String sql="INSERT INTO coursedir(id,course_name,chapter_id,chapter_name,classHour_id,classHour_name,resources) VALUE(id,?,?,?,?,?,?)";
+		PreparedStatement pstmt=null;
+		DataBaseConnection dbc=null;
+		dbc=new DataBaseConnection();
+		try{
+			pstmt=dbc.getConnection().prepareStatement(sql);
+			pstmt.setString(1,courseDir.getCourseName());
+			pstmt.setString(2,courseDir.getChapterId());
+			pstmt.setString(3,courseDir.getChapterName());
+			pstmt.setString(4,courseDir.getClassHourId());
+			pstmt.setString(5,courseDir.getClassHourName());
+			pstmt.setString(6,courseDir.getResources());
+			pstmt.executeUpdate();
+			pstmt.close();
+		}catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}finally {
+			dbc.close();
+		}
+	}
+
 }

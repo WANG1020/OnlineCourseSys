@@ -8,21 +8,21 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import note.factory.DaoFactory;
+import note.vo.courseDir;
 
 /**
- * Servlet implementation class searchServlet
+ * Servlet implementation class insertDir
  */
-@WebServlet("/searchServlet")
-public class searchServlet extends HttpServlet {
+@WebServlet("/insertDir")
+public class insertDir extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public searchServlet() {
+    public insertDir() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -43,36 +43,27 @@ public class searchServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out=response.getWriter();
-		HttpSession session=request.getSession();
 		
-		String method=request.getParameter("method");
-		String search=request.getParameter("search-value");
+		
+		String coursename=request.getParameter("courseName");
+		String chapterId=request.getParameter("chapterId");
+		String chapterName=request.getParameter("chapterName");
+		String classHId=request.getParameter("classHId");
+		String classHName=request.getParameter("classHName");
+		String reString=request.getParameter("res");
+		
+		courseDir courseDir=new courseDir();
+		courseDir.setChapterId(chapterId);
+		courseDir.setCourseName(coursename);
+		courseDir.setChapterName(chapterName);
+		courseDir.setClassHourId(classHId);
+		courseDir.setClassHourName(classHName);
+		courseDir.setResources(reString);
 		
 		try {
-			HttpSession hs=request.getSession(true);
-			hs.setMaxInactiveInterval(80);
-			hs.setAttribute("search", search);
-			if(!DaoFactory.getcourseDaoInstance().searchCourse(search).isEmpty()&&DaoFactory.getcourseDaoInstance().searchCourse(search).size()>0){
-				if(method.equals("tea")){
-				out.print("<script language=javascript>" +
-						"window.location.href='stu/search.jsp';</script>");
-				}
-				if(method.equals("stu")){
-					out.print("<script language=javascript>" +
-							"window.location.href='teacher/search.jsp';</script>");	
-				}
-				hs.setAttribute("serarch-success-fail","success");
-			}else{
-				if(method.equals("tea")){
-				out.print("<script language=javascript>" +
-						"window.location.href='stu/search.jsp';</script>");
-				}
-				if(method.equals("stu")){
-					out.print("<script language=javascript>" +
-							"window.location.href='teacher/search.jsp';</script>");	
-				}
-				hs.setAttribute("serarch-success-fail","fail");
-			}
+			DaoFactory.getcourseDirDaoInstance().insertDir(courseDir);
+			out.print("<script language=javascript>alert('发布成功！！');" +
+					"window.location.href='teacher/containStu.jsp?course_name="+coursename+"';</script>");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -208,6 +208,30 @@ public class courseDaoImpl implements courseDao{
 		
 		return all;//返回all
 	}
+
+	@Override
+	public void insert(course course) throws Exception {
+		// TODO Auto-generated method stub
+		String sql="INSERT INTO course(id,NAME,intro,Deintro,teacher,img) VALUE(id,?,?,?,?,?)";
+		PreparedStatement pstmt=null;
+		DataBaseConnection dbc=null;
+		dbc=new DataBaseConnection();
+		try{
+			pstmt=dbc.getConnection().prepareStatement(sql);
+			pstmt.setString(1,course.getName());
+			pstmt.setString(2, course.getInto());
+			pstmt.setString(3, course.getDeintro());
+			pstmt.setString(4, course.getTeacher());
+			pstmt.setString(5, course.getImg());
+			pstmt.executeUpdate();
+			pstmt.close();
+		}catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}finally {
+			dbc.close();
+		}
+	}
 	
 	
 	

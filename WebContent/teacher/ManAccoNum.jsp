@@ -7,7 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>OnliceCourse-账号中心</title>
-<link rel="stylesheet" type="text/css" href="../css/ManAccoNum.css">
+<link rel="stylesheet" type="text/css" href="../css/ManAccoNum.css" charset=UTF-8>
 <link href="../bootstrap4/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" href="../dist/css/lightbox.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"><!--内置图标，未使用，待完成  -->
@@ -82,8 +82,8 @@ function chceckPasswordNull(){
 									 <a class="nav-link" href="#">我的题库</a>
 								</li>
 							</ul>
-							<form class="form-inline">
-								<input class="form-control mr-sm-2" type="text" /> 
+							<form class="form-inline" action="../searchServlet?method=tea" method="post"> 
+								<input class="form-control mr-sm-2" type="text" name="search-value"/> 
 								<button class="btn btn-primary my-2 my-sm-0" type="submit">
 									搜索
 								</button>
@@ -95,7 +95,7 @@ function chceckPasswordNull(){
 									 <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown"><%=name%>></a>
 									<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
 										 <a class="dropdown-item" href="userHome.jsp">我的主页</a> <a class="dropdown-item" href="ManAccoNum.jsp"s>账号管理</a>
-										 <a class="dropdown-item" href="#">消息中心</a>
+										  <a class="dropdown-item" href="publishingCourses.jsp">发布课程</a><a class="dropdown-item" href="#">消息中心</a>
 										<div class="dropdown-divider">
 										</div> <a class="dropdown-item" href="login.html">退出</a>
 									</div>
@@ -112,79 +112,88 @@ function chceckPasswordNull(){
 					</nav>
 				</div>
 			</div>
-			<div class="divul">
-				<div>
-					<ul id="job-label" class="ul1">
-						<li id="job-label-1" class="li1"><input id="k-div-1" style="border-style: none;background:white;" type="button" value="基本信息"></li>
-						<li id="job-label-2" class="li1"><input id="k-div-2" style="border-style: none;background:white;" type="button" value="账号管理"></li>
-					</ul>
-					<div class="hrwra">
-						<HR style="FILTER: alpha(opacity=100,finishopacity=0,style=1);" width="90%"  color=#008573 SIZE=3>
-					</div>
-				</div>
-				<%--基本信息开始 --%>
-				<div id="div-1" class="divwra1">
-					<br>
-					<em class="infoLabel">个人信息</em>
-					<ul style="list-style:none;">
-						<li class="clearfix">
-							<div class="personPic">
-								<form action="../UpdateUserImageServlet1" method="post" enctype="multipart/form-data" onsubmit="return checkImgSubmit();">
-									<%String headimg=DaoFactory.getuserDaoInstance().userImg(name); %>
-									<img width="130px" height="130px" src=<%=headimg %>>
-									<input id="file1" class="awra1 " type="file" name="file1" size="20">
-									<input  class="btn btn-info" type="submit" value="提交" name="img-submit">
-								</form>
-							</div>
-						</li>
-						<li class="clearfix">
-							<div class="liwra1">
-								<p><span>姓名：</span>&nbsp;&nbsp;<%=name %>&nbsp;&nbsp;<img src="../images/icon2.png"></p>
-							</div>
-						</li>
-						<li class="clearfix">
-							<div  class="liwra1">
-							<form action="../updateEmailServlet" method="post" onsubmit="return checkEmailSubmit();">
-								<p>邮箱：<input id="email" name="email" type="text">&nbsp;<input class="btn btn-outline-info" type="submit" value="绑定邮箱" name="submit-email"></p>
-							</form>
-							</div>
-						</li>
-					</ul>
-				</div>
-				<%--基本信息结束 --%>
-				<!-- 账号管理开始 -->
-				<div id="div-2" class="divwra1" style="display:none">
-					<br>
-					<em class="infoLabel">修改密码</em>
-					<form action="../updateUserPasswordServlet" method="post" onsubmit="return chceckPasswordNull();">
-						<ul style="list-style:none;">
-							<li class="clearfix">
-								<span>密码：</span>
-								<div class="inputwra">
-									<input type="password" id="j-input-origin-pwd" name="j-input-origin-pwd">
-								</div>
+			<br>
+			<div class="row">
+				<div class="col-md-8">
+					<div class="tabbable" id="tabs-981611">
+						<ul class="nav nav-tabs">
+							<li class="nav-item">
+								<a class="nav-link active show" href="#tab1" data-toggle="tab">基本信息</a>
 							</li>
-							<li class="clearfix">
-								<span>新密码：</span>
-								<div class="inputwra">
-								 	<input type="password" id="j-input-new-pwd" name="j-input-new-pwd">
-								 </div>
-							</li>
-							<li class="clearfix">
-								<span>确认密码：</span>
-								<div class="inputwra">
-								 	<input type="password" id="j-input-new-repwd" name="j-input-new-repwd">
-								</div>
-							</li>
-							<li class="clearfix">
-								<div class="inputwra1">
-									<input  class="btn btn-info" type="submit" value="保存" name="img-submit">
-								</div>
+							<li class="nav-item">
+								<a class="nav-link" href="#tab2" data-toggle="tab">账号管理</a>
 							</li>
 						</ul>
-					</form>
+						<div class="tab-content">
+							<div class="tab-pane active divwra1" id="tab1">
+								<%--基本信息开始 --%>
+									<br>
+									<em class="infoLabel">个人信息</em>
+									<ul style="list-style:none;">
+										<li class="clearfix">
+											<div class="personPic">
+												<form action="../UpdateUserImageServlet1" method="post" enctype="multipart/form-data" onsubmit="return checkImgSubmit();">
+													<%String headimg=DaoFactory.getuserDaoInstance().userImg(name); %>
+													<img width="130px" height="130px" src=<%=headimg %>>
+													<input id="file1" class="awra1 " type="file" name="file1" size="20">
+													<input  class="btn btn-info" type="submit" value="提交" name="img-submit">
+												</form>
+											</div>
+										</li>
+										<li class="clearfix">
+											<div class="liwra1">
+												<p><span>姓名：</span>&nbsp;&nbsp;<%=name %>&nbsp;&nbsp;<img src="../images/icon2.png"></p>
+											</div>
+										</li>
+										<li class="clearfix">
+											<div  class="liwra1">
+											<form action="../updateEmailServlet" method="post" onsubmit="return checkEmailSubmit();">
+												<p>邮箱：<input id="email" name="email" type="text">&nbsp;<input class="btn btn-outline-info" type="submit" value="绑定邮箱" name="submit-email"></p>
+											</form>
+											</div>
+										</li>
+									</ul>
+								<%--基本信息结束 --%>
+							</div>
+							<div class="tab-pane divwra1" id="tab2">
+								<!-- 账号管理开始 -->
+									<br>
+									<em class="infoLabel">修改密码</em>
+									<form action="../updateUserPasswordServlet" method="post" onsubmit="return chceckPasswordNull();">
+										<ul style="list-style:none;">
+											<li class="clearfix">
+												<span>密码：</span>
+												<div class="inputwra">
+													<input type="password" id="j-input-origin-pwd" name="j-input-origin-pwd">
+												</div>
+											</li>
+											<li class="clearfix">
+												<span>新密码：</span>
+												<div class="inputwra">
+												 	<input type="password" id="j-input-new-pwd" name="j-input-new-pwd">
+												 </div>
+											</li>
+											<li class="clearfix">
+												<span>确认密码：</span>
+												<div class="inputwra">
+												 	<input type="password" id="j-input-new-repwd" name="j-input-new-repwd">
+												</div>
+											</li>
+											<li class="clearfix">
+												<div class="inputwra1">
+													<input  class="btn btn-info" type="submit" value="保存" name="img-submit">
+												</div>
+											</li>
+										</ul>
+									</form>
+								<!-- 账号管理结束 -->
+							</div>
+						</div>
+					</div>
 				</div>
-				<!-- 账号管理结束 -->
+				<div class="col-md-4">
+				</div>
+			</div>
 			</div>
 		</div>
 	</div>
@@ -192,15 +201,5 @@ function chceckPasswordNull(){
 <%}else{%>
 	<h4>页面不存在，请查看您的登录信息！</h4>
 <%} %>
-<script	type="text/javascript">
-	$('#k-div-1').click(function(){
-		document.getElementById("div-1").style.display="";
-		document.getElementById("div-2").style.display="none";
-	});
-	$('#k-div-2').click(function(){
-		document.getElementById("div-2").style.display="";
-		document.getElementById("div-1").style.display="none";
-	});
-</script>
 </body>
 </html>

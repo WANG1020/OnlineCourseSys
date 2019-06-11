@@ -1,4 +1,4 @@
-<!--  用户首页   -->
+<!--  教师首页   -->
 <%@page import="java.util.List"%>
 <%@page import="note.vo.course"%>
 <%@page import="java.util.ArrayList"%>
@@ -57,7 +57,7 @@
 									<a class="nav-link" href="#AllCourse">所有课程</a>
 								</li>
 							</ul>
-							<form class="form-inline" action="../searchServlet" method="post"> 
+							<form class="form-inline" action="../searchServlet?method=tea" method="post"> 
 								<input class="form-control mr-sm-2" type="text" name="search-value"/> 
 								<button class="btn btn-primary my-2 my-sm-0" type="submit">
 									搜索
@@ -70,7 +70,7 @@
 									 <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown"><%=name%>></a>
 									<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
 										 <a class="dropdown-item" href="userHome.jsp">我的主页</a> <a class="dropdown-item" href="ManAccoNum.jsp">账号管理</a>
-										 <a class="dropdown-item" href="#">消息中心</a>
+										 <a class="dropdown-item" href=publishingCourses.jsp?name=<%=name%>>发布课程</a><a class="dropdown-item" href="#">消息中心</a>
 										<div class="dropdown-divider">
 										</div> <a class="dropdown-item" href="login.html">退出</a>
 									</div>
@@ -263,5 +263,11 @@
 		</div>
 		</div>
 </div>
+<script type="text/javascript">
+$('.carousel').carousel({
+	interval:4000,
+	pause:false
+})
+</script>
 </body>
 </html>

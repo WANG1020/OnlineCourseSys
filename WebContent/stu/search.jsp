@@ -41,7 +41,7 @@ if(flag.equals("success")){%>
 							 <a class="nav-link" href="#">我的题库</a>
 						</li>
 					</ul>
-					<form class="form-inline" action="../searchServlet" method="post"> 
+					<form class="form-inline" action="../searchServlet?method=stu" method="post"> 
 						<input class="form-control mr-sm-2" type="text" name="search-value"/> 
 						<button class="btn btn-primary my-2 my-sm-0" type="submit">
 							搜索

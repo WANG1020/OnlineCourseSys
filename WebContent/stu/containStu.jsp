@@ -51,8 +51,8 @@ if(!name.equals("未登录")){%>
 								 <a class="nav-link" href="#">我的题库</a>
 							</li>
 						</ul>
-						<form class="form-inline">
-							<input class="form-control mr-sm-2" type="text" /> 
+						<form class="form-inline" action="../searchServlet?method=stu" method="post"> 
+							<input class="form-control mr-sm-2" type="text" name="search-value"/> 
 							<button class="btn btn-primary my-2 my-sm-0" type="submit">
 								搜索
 							</button>
@@ -61,7 +61,7 @@ if(!name.equals("未登录")){%>
 						<ul class="navbar-nav ml-md-auto">
 						<img src=<%=img %> width="40px" height="40px">
 							<li class="nav-item dropdown">
-								 <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown"><%=name%>></a>
+								 <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown"><%=name%></a>
 								<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
 									 <a class="dropdown-item" href="userHome.jsp">我的主页</a> <a class="dropdown-item" href="ManAccoNum.jsp">账号管理</a>
 									 <a class="dropdown-item" href="#">我的信息</a>
@@ -99,6 +99,7 @@ if(!name.equals("未登录")){%>
 					<h3>
 						<%=list.get(0).getName() %>
 					</h3>
+					<p>任课教师：<%=list.get(0).getTeacher() %></p>
 				</div>
 				<div class="col-md-2">
 				<br>
@@ -179,7 +180,7 @@ if(!name.equals("未登录")){%>
 									List<note> noteList1=new ArrayList<note>(); 
 									for(int k=0;k<noteList.size();k++){
 										if(noteList.size()!=0){
-											noteList1=DaoFactory.getnoteDaoInstance().findQueAnsByTitle(noteList.get(k).getTitile(), chaString);
+											noteList1=DaoFactory.getnoteDaoInstance().findQueAnsByTitle(noteList.get(k).getTitle(), chaString);
 										%>
 										<%String imgString=DaoFactory.getuserDaoInstance().userImg(noteList.get(k).getAuthor()); %>
 											<div class="divwra1">
@@ -188,34 +189,61 @@ if(!name.equals("未登录")){%>
 													<span style="padding-left:12px;font-size:22px;"><%=noteList.get(k).getAuthor() %></span></p>
 												</div>
 												<div class="quediv">
-													<p style="padding-left:90px;padding-top:23px;font-size:18px;"><%=noteList.get(k).getTitile() %></p>
+													<p style="padding-left:90px;padding-top:23px;font-size:18px;"><%=noteList.get(k).getTitle() %></p>
 													<%if(noteList.get(k).getContent()!=null){ %>
 														<p style="padding-left:90px;font-size:15px;"><%=noteList.get(k).getContent() %></p>
 													<%} %>
 												</div>
 												<div class="footerdivd">
-													<p><!-- <input class="btn btn-secondary" type="button" value="回答">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; --><%=noteList.get(k).getCourse_name() %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													<p><%=noteList.get(k).getCourse_name() %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 													<%=noteList.get(k).getClassHour_name() %></p>
-												</div>
-												<div class="dropdown">
-													<button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown">
-														Action
-													</button>
-													<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-														 <a class="dropdown-item disabled" href="#">Action</a> <a class="dropdown-item" href="#">Another action</a> <a class="dropdown-item" href="#">Something else here</a>
-													</div>
 												</div>
 											</div>
 										<%}
 									}%>
 								<%}
 								}%>
+								<div class="row">
+									<div class="col-md-6">
+										<form method="post" action="../updateNoteServlet">
+										  <div class="form-group row">
+										    <label for="text" class="col-4 col-form-label">title</label> 
+										    <div class="col-8">
+										      <div class="input-group">
+										        <div class="input-group-prepend">
+										          <div class="input-group-text">
+										            <i class="fa fa-align-center"></i>
+										          </div>
+										        </div> 
+										        <input id="title" name="title" type="text" class="form-control">
+										        <input type="hidden" id="class_name" value=<%=list.get(0).getName() %> name="class_name">
+										        <input type="hidden" id="course_name" name="course_name" value=<%=list.get(0).getName() %>>
+										        <input type="hidden" id="author" name="author" value=<%=name%>>
+										      </div>
+										    </div>
+										  </div>
+										  <div class="form-group row">
+										    <label for="textarea" class="col-4 col-form-label">content</label> 
+										    <div class="col-8">
+										      <textarea id="content" name="content" cols="40" rows="5" class="form-control"></textarea>
+										    </div>
+										  </div> 
+										  <div class="form-group row">
+										    <div class="offset-4 col-8">
+										      <button name="submit" type="submit" class="btn btn-primary">提交</button>
+										    </div>
+										  </div>
+										</form>
+									</div>
+									<div class="col-md-4">
+									</div>
+								</div>
 						<!-- 问答评论结束 -->
 					</div>
 				</div>
 			</div>
 		</div>
-		<div class="col-md-4">
+		<div class="col-md-6">
 		</div>
 	</div>
 </div>

@@ -8,21 +8,22 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import note.factory.DaoFactory;
+import note.vo.electivecourse;
+import note.vo.note;
 
 /**
- * Servlet implementation class searchServlet
+ * Servlet implementation class startStudyServlet
  */
-@WebServlet("/searchServlet")
-public class searchServlet extends HttpServlet {
+@WebServlet("/startStudyServlet")
+public class startStudyServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public searchServlet() {
+    public startStudyServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -43,35 +44,22 @@ public class searchServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out=response.getWriter();
-		HttpSession session=request.getSession();
 		
 		String method=request.getParameter("method");
-		String search=request.getParameter("search-value");
-		
+		String username=request.getParameter("username");
+		String coursename=request.getParameter("courseName");
+		electivecourse electivecourse=new electivecourse();
+		electivecourse.setName(username);
+		electivecourse.setClass_name(coursename);
 		try {
-			HttpSession hs=request.getSession(true);
-			hs.setMaxInactiveInterval(80);
-			hs.setAttribute("search", search);
-			if(!DaoFactory.getcourseDaoInstance().searchCourse(search).isEmpty()&&DaoFactory.getcourseDaoInstance().searchCourse(search).size()>0){
-				if(method.equals("tea")){
-				out.print("<script language=javascript>" +
-						"window.location.href='stu/search.jsp';</script>");
-				}
-				if(method.equals("stu")){
-					out.print("<script language=javascript>" +
-							"window.location.href='teacher/search.jsp';</script>");	
-				}
-				hs.setAttribute("serarch-success-fail","success");
-			}else{
-				if(method.equals("tea")){
-				out.print("<script language=javascript>" +
-						"window.location.href='stu/search.jsp';</script>");
-				}
-				if(method.equals("stu")){
-					out.print("<script language=javascript>" +
-							"window.location.href='teacher/search.jsp';</script>");	
-				}
-				hs.setAttribute("serarch-success-fail","fail");
+			DaoFactory.getelectiveCourseDaoInstance().insertRecord(electivecourse);
+			if(method.equals("teatar")){
+				out.print("<script language=javascript>alert('参与成功！');" +
+						"window.location.href='teacher/oc_home.jsp';</script>");
+			}
+			if(method.equals("stutar")){
+				out.print("<script language=javascript>alert('参与成功！');" +
+						"window.location.href='stu/oc_home.jsp';</script>");
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

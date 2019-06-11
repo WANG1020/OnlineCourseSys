@@ -8,21 +8,21 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import note.factory.DaoFactory;
+import note.vo.note;
 
 /**
- * Servlet implementation class searchServlet
+ * Servlet implementation class updateNoteServlet
  */
-@WebServlet("/searchServlet")
-public class searchServlet extends HttpServlet {
+@WebServlet("/updateNoteServlet")
+public class updateNoteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public searchServlet() {
+    public updateNoteServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -43,40 +43,31 @@ public class searchServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out=response.getWriter();
-		HttpSession session=request.getSession();
 		
-		String method=request.getParameter("method");
-		String search=request.getParameter("search-value");
+		String course_name=request.getParameter("course_name");
+		String class_name=request.getParameter("class_name");
+		String author=request.getParameter("author");
+		String title=request.getParameter("title");
+		String content=request.getParameter("content");
+		String flag=request.getParameter("flag");
+		
+		note note=new note();
+		note.setCourse_name(course_name);
+		note.setClassHour_name(class_name);
+		note.setAuthor(author);
+		note.setTitle(title);
+		note.setContent(content);
+		note.setFlag(flag);
 		
 		try {
-			HttpSession hs=request.getSession(true);
-			hs.setMaxInactiveInterval(80);
-			hs.setAttribute("search", search);
-			if(!DaoFactory.getcourseDaoInstance().searchCourse(search).isEmpty()&&DaoFactory.getcourseDaoInstance().searchCourse(search).size()>0){
-				if(method.equals("tea")){
-				out.print("<script language=javascript>" +
-						"window.location.href='stu/search.jsp';</script>");
-				}
-				if(method.equals("stu")){
-					out.print("<script language=javascript>" +
-							"window.location.href='teacher/search.jsp';</script>");	
-				}
-				hs.setAttribute("serarch-success-fail","success");
-			}else{
-				if(method.equals("tea")){
-				out.print("<script language=javascript>" +
-						"window.location.href='stu/search.jsp';</script>");
-				}
-				if(method.equals("stu")){
-					out.print("<script language=javascript>" +
-							"window.location.href='teacher/search.jsp';</script>");	
-				}
-				hs.setAttribute("serarch-success-fail","fail");
-			}
+			DaoFactory.getnoteDaoInstance().updateNote(note);
+			out.print("<script language=javascript>alert('发布成功！');" +
+					"window.location.href='stu/containStu.jsp';</script>");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
 	}
 
 }

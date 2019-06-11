@@ -14,4 +14,6 @@ public interface courseDao {
 	
 	public List<course> searchCourse(String search)throws Exception;
 	
+	public void insert(course course)throws Exception;
+	
 }

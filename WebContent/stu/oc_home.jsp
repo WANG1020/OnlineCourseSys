@@ -9,7 +9,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>OnlineCourse-首页</title>
+<title>OnlineCourse-学生首页</title>
 <link rel="stylesheet" type="text/css" href="../css/oc_home.css">
 <link href="../bootstrap4/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" href="../dist/css/lightbox.min.css">
@@ -57,7 +57,7 @@
 									<a class="nav-link" href="#AllCourse">所有课程</a>
 								</li>
 							</ul>
-							<form class="form-inline" action="../searchServlet" method="post"> 
+							<form class="form-inline" action="../searchServlet?method=stu" method="post"> 
 								<input class="form-control mr-sm-2" type="text" name="search-value"/> 
 								<button class="btn btn-primary my-2 my-sm-0" type="submit">
 									搜索

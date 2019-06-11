@@ -30,7 +30,7 @@ public class noteDaoImpl implements noteDao{
 				note note=new note();
 				note.setCourse_name(rs.getString(2));
 				note.setClassHour_name(rs.getString(3));
-				note.setTitile(rs.getString(4));
+				note.setTitle(rs.getString(4));
 				note.setAuthor(rs.getString(5));
 				note.setContent(rs.getString(6));
 				notes.add(note);
@@ -66,7 +66,7 @@ public class noteDaoImpl implements noteDao{
 				note note=new note();
 				note.setCourse_name(rs.getString(2));
 				note.setClassHour_name(rs.getString(3));
-				note.setTitile(rs.getString(4));
+				note.setTitle(rs.getString(4));
 				note.setAuthor(rs.getString(5));
 				note.setContent(rs.getString(6));
 				notes.add(note);
@@ -80,6 +80,31 @@ public class noteDaoImpl implements noteDao{
 		}
 		
 		return notes;
+	}
+
+	@Override
+	public void updateNote(note note) throws Exception {
+		// TODO Auto-generated method stub
+		String sql="INSERT INTO note(id,course_name,classHour_name,title,author,content,flag) VALUE(id,?,?,?,?,?,?)";
+		PreparedStatement pstmt=null;
+		DataBaseConnection dbc=null;
+		dbc=new DataBaseConnection();
+		try{
+			pstmt=dbc.getConnection().prepareStatement(sql);
+			pstmt.setString(1, note.getCourse_name());
+			pstmt.setString(2, note.getClassHour_name());
+			pstmt.setString(3, note.getTitle());
+			pstmt.setString(4, note.getAuthor());
+			pstmt.setString(5, note.getContent());
+			pstmt.setString(6, note.getFlag());
+			pstmt.executeUpdate();
+			pstmt.close();
+		}catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}finally {
+			dbc.close();
+		}
 	}
 	
 }

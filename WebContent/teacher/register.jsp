@@ -45,7 +45,7 @@ function showImg() {
 </head>
 <body>
 <div class="header">
-	<h4>OnlineCourse在线学习-注册界面</h4>
+	<h4>OnlineCourse在线学习-教师注册界面</h4>
 </div>
 <div class="div1">
 <form  action="../registerServlet" method="post" onSubmit="return check_admin(this)">
@@ -85,7 +85,7 @@ function showImg() {
 		<td align="center" colspan="2">&nbsp;<input type="text" name="email" placeholder="输入你的邮箱">*</td>
 	</tr>
 	<tr><td><input type="hidden" id="imgsrc" name="imgsrc" value="img/头像9.png"></td>
-		<td><input type="hidden" id="flag" name="flag" value="0"></td>
+		<td><input type="hidden" id="flag" name="flag" value="1"></td>
 	</tr>
 	<tr>
 		<td colspan="4" align="center">
