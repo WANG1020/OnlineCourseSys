@@ -1,0 +1,29 @@
+@CHARSET "UTF-8";
+.ba1{
+	background:#f4f4f4;
+}
+.divwra1{
+	clear:both;
+	margin-top:20px;
+	border:5px solid white;
+	border-radius:16px;
+	background:white;
+	width:100%;
+}
+.imgdiv{
+	float:left;
+	/* width:100px; */
+}
+.quediv{
+	padding-left:40px;
+}
+.footerdivd{
+	font-size:12px;
+	color:#cfcfcf;
+}
+.ansdiv{
+	clear:both;
+	border:5px solid white;
+	border-radius:16px;
+	background:white;
+	

@@ -1,0 +1,54 @@
+@CHARSET "UTF-8";
+.wra1{
+	background:#f4f4f4;
+}
+.divwra1{
+	background:white;
+	margin-left:150px;
+	width:80%;
+}
+.msgCenter_sp {
+    border-bottom: #008573 4px solid;
+    line-height: 40px;
+    font-size: 18px;
+    color: #008573;
+}
+
+.fl {
+    float: left;
+    display: inline;
+}
+.msg_ReadInfo {
+    min-height: 600px;
+}
+.clearfix {
+    clear: both;
+    zoom: 1;
+}
+ul {
+    display: block;
+    list-style-type: disc;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+}
+.msg_ReadInfoList li {
+    min-height: 60px;
+    margin-top: 10px;
+    border-bottom: #dcdcdc 1px solid;
+    padding: 15px 15px 15px 100px;
+}
+
+li {
+    list-style: none;
+    vertical-align: bottom;
+    list-style-type: none;
+}
+.msgPic {
+    width: 60px;
+    height: 60px;
+    float: left;
+    margin-left: -82px;
+}

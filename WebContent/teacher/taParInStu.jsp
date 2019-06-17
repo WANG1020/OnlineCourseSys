@@ -64,7 +64,8 @@ if(!name.equals("未登录")){%>
 								 <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown"><%=name%></a>
 								<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
 									 <a class="dropdown-item" href="userHome.jsp">我的主页</a> <a class="dropdown-item" href="ManAccoNum.jsp">账号管理</a>
-									  <a class="dropdown-item" href="publishingCourses.jsp">发布课程</a><a class="dropdown-item" href="#">我的信息</a>
+									 <a class="dropdown-item" href="publishingCourses.jsp">发布课程</a><a class="dropdown-item" href="#">发布公告</a>
+									  <a class="dropdown-item" href="#">我的信息</a>
 									<div class="dropdown-divider">
 									</div> <a class="dropdown-item" href="login.html">退出</a>
 								</div>
@@ -149,13 +150,13 @@ if(!name.equals("未登录")){%>
 								<%for(int j=0;j<list2.size();j++){ %>
 									<li class="li2" style="height:40px;">
 									<% if(!list2.get(j).getClassHourName().equals("练习题")){%>
-									<a href="study.jsp?flag=0?course_id=<%=list2.get(j).getClassHourId()  %>?course_name=<%=list2.get(j).getClassHourName() %>" style="color:black;">
+									<a href="study.jsp?flag=0&course_id=<%=list2.get(j).getClassHourId()  %>&course_name=<%=list2.get(j).getCourseName() %>" style="color:black;">
 										<p><img src="../images/1.png">
 											<span style="padding-left:8px;"><%=list2.get(j).getClassHourId() %>&nbsp;<%=list2.get(j).getClassHourName() %></span>
 											<img style="float:right;padding-right:12px;" src="../images/3.png">
 										</p></a>
 									<%}else{ %>
-										<a href="study.jsp?flag=1?course_id=<%=list2.get(j).getClassHourId()  %>?course_name=<%=list2.get(j).getClassHourName() %>" style="color:black;">
+										<a href="study.jsp?flag=1&course_id=<%=list2.get(j).getClassHourId()  %>&course_name=<%=list2.get(j).getCourseName() %>" style="color:black;">
 										<p><img src="../images/2.png">
 											<span style="padding-left:8px;"><%=list2.get(j).getClassHourId() %>&nbsp;<%=list2.get(j).getClassHourName() %></span>
 											<img  style="float:right;padding-right:12px;" src="../images/3.png">

@@ -10,4 +10,6 @@ public interface noteDao {
 	
 	public void updateNote(note note)throws Exception;
 	public List<note> findDirQue(String name)throws Exception;
+	public void releNotice(note note )throws Exception;
+	public List<note> findAllNotice(String username)throws Exception;
 }

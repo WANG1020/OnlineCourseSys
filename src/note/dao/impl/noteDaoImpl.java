@@ -139,5 +139,62 @@ public class noteDaoImpl implements noteDao{
 		
 		return notes;
 	}
+
+	@Override
+	public void releNotice(note note) throws Exception {
+		// TODO Auto-generated method stub
+		String sql="INSERT INTO note(id,course_name,title,author,content,flag) VALUE(id,?,?,?,?,?)";
+		PreparedStatement pstmt=null;
+		DataBaseConnection dbc=null;
+		dbc=new DataBaseConnection();
+		try{
+			pstmt=dbc.getConnection().prepareStatement(sql);
+			pstmt.setString(1, note.getCourse_name());
+			pstmt.setString(2, note.getTitle());
+			pstmt.setString(3, note.getAuthor());
+			pstmt.setString(4, note.getContent());
+			pstmt.setString(5,note.getFlag());
+			pstmt.executeUpdate();
+			pstmt.close();
+		}catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}finally {
+			dbc.close();
+		}
+	}
+
+	@Override
+	public List<note> findAllNotice(String username) throws Exception {
+		// TODO Auto-generated method stub
+		List notes=new ArrayList();
+		String sql="SELECT note.* FROM note\r\n"+  
+					"INNER JOIN electivecourse ON electivecourse.class_name=note.course_name\r\n"+  
+					"WHERE  flag=2 AND electivecourse.name=?";
+		PreparedStatement pstmt=null;
+		DataBaseConnection dbc=null;
+		dbc=new DataBaseConnection();
+		try{
+			pstmt=dbc.getConnection().prepareStatement(sql);
+			pstmt.setString(1, username);
+			ResultSet rs=pstmt.executeQuery();
+			/*System.out.println("查询公告的sql语句"+pstmt);*/
+			while(rs.next()){
+				note note=new note();
+				note.setCourse_name(rs.getString(2));
+				note.setTitle(rs.getString(4));
+				note.setAuthor(rs.getString(5));
+				note.setContent(rs.getString(6));
+				notes.add(note);
+			}
+			pstmt.close();
+		}catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}finally {
+			dbc.close();
+		}
+		return notes;
+	}
 	
 }

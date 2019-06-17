@@ -19,7 +19,6 @@
 <script type="text/javascript" src="../js/jquery-3.4.0.js"></script>
 <script type="text/javascript" src="../bootstrap4/js/bootstrap.min.js"></script>
 <script src="../dist/js/lightbox-plus-jquery.min.js"></script>
-<script src="../dist/js/lightbox-plus-jquery.min.js"></script>
 </head>
 <body class="wra1">
 <% 
@@ -145,13 +144,13 @@ if(!name.equals("未登录")){%>
 								<%for(int j=0;j<list2.size();j++){ %>
 									<li class="li2" style="height:40px;">
 									<% if(!list2.get(j).getClassHourName().equals("练习题")){%>
-									<a href="study.jsp?flag=0?course_id=<%=list2.get(j).getClassHourId()  %>?course_name=<%=list2.get(j).getClassHourName() %>" style="color:black;">
+									<a href="study.jsp?flag=0&course_id=<%=list2.get(j).getClassHourId()  %>&course_name=<%=list2.get(j).getCourseName() %>" style="color:black;">
 										<p><img src="../images/1.png">
 											<span style="padding-left:8px;"><%=list2.get(j).getClassHourId() %>&nbsp;<%=list2.get(j).getClassHourName() %></span>
 											<img style="float:right;padding-right:12px;" src="../images/3.png">
 										</p></a>
 									<%}else{ %>
-										<a href="study.jsp?flag=1?course_id=<%=list2.get(j).getClassHourId()  %>?course_name=<%=list2.get(j).getClassHourName() %>" style="color:black;">
+										<a href="study.jsp?flag=1&course_id=<%=list2.get(j).getClassHourId()  %>&course_name=<%=list2.get(j).getCourseName() %>" style="color:black;">
 										<p><img src="../images/2.png">
 											<span style="padding-left:8px;"><%=list2.get(j).getClassHourId() %>&nbsp;<%=list2.get(j).getClassHourName() %></span>
 											<img  style="float:right;padding-right:12px;" src="../images/3.png">

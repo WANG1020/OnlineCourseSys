@@ -70,7 +70,8 @@
 									 <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown"><%=name%>></a>
 									<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
 										 <a class="dropdown-item" href="userHome.jsp">我的主页</a> <a class="dropdown-item" href="ManAccoNum.jsp">账号管理</a>
-										 <a class="dropdown-item" href=publishingCourses.jsp?name=<%=name%>>发布课程</a><a class="dropdown-item" href="#">消息中心</a>
+										 <a class="dropdown-item" href=publishingCourses.jsp?name=<%=name%>>发布课程</a><a class="dropdown-item" href="releNotice.jsp">发布公告</a>
+										  <a class="dropdown-item" href="Info.jsp">我的信息</a>
 										<div class="dropdown-divider">
 										</div> <a class="dropdown-item" href="login.html">退出</a>
 									</div>
@@ -88,98 +89,98 @@
 				</div>
 			</div>
 			<!-- 导航栏结束 -->
-<!--推荐课程开始  -->
-<h4 class="h4wra" align="center"><em>推荐课程</em></h4>	
-<div class="row">
-<div class="col-md-4">
-	<div id="card-616186">
-		<div class="card">
-			<div class="card-header">
-				 <a class="card-link" data-toggle="collapse" data-parent="#card-616186" href="#card-element-278042">C语言入门</a>
-			</div>
-			<div id="card-element-278042" class="collapse">
-				<div class="card-body">
-					简介：本C语言教程从以下几个模块来贯穿主要知识点：初始C程序、数据类型、运算符、语句结构、函数和数组。每个阶段都配有练习题同时提供在线编程任务。希望通过本教程帮助C语言入门学习者迅速掌握程序逻辑并开始C语言编程。
+			<!--推荐课程开始  -->
+			<h4 class="h4wra" align="center"><em>推荐课程</em></h4>	
+			<div class="row">
+			<div class="col-md-4">
+				<div id="card-616186">
+					<div class="card">
+						<div class="card-header">
+							 <a class="card-link" data-toggle="collapse" data-parent="#card-616186" href="#card-element-278042">C语言入门</a>
+						</div>
+						<div id="card-element-278042" class="collapse">
+							<div class="card-body">
+								简介：本C语言教程从以下几个模块来贯穿主要知识点：初始C程序、数据类型、运算符、语句结构、函数和数组。每个阶段都配有练习题同时提供在线编程任务。希望通过本教程帮助C语言入门学习者迅速掌握程序逻辑并开始C语言编程。
+							</div>
+						</div>
+					</div>
+					<div class="card">
+						<div class="card-header">
+							 <a class="collapsed card-link" data-toggle="collapse" data-parent="#card-616186" href="#card-element-462447">玩转算法和数据结构</a>
+						</div>
+						<div id="card-element-462447" class="collapse">
+							<div class="card-body">
+								任何时候学习算法都不晚，而且越早越好，这么多年，你听说过技术过时，什么时候听说过算法过时，不仅没有过时，因为机器学习、大数据的要求，算法变得越来越重要了
+							</div>
+						</div>
+					</div>
+					<div class="card">
+						<div class="card-header">
+							 <a class="collapsed card-link" data-toggle="collapse" data-parent="#card-616186" href="#card-element-462347">C++远征之起航篇</a>
+						</div>
+						<div id="card-element-462347" class="collapse">
+							<div class="card-body">
+								简介：本教程是C++的初级教程，是在C语言基础上的一个延伸，讲述了包括新增数据类型、命名空间等内容，最后通过一个通俗易懂的例子将所述知识点融会贯通，以达到知识灵活运用，最终得以升华的目的。
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
-		</div>
-		<div class="card">
-			<div class="card-header">
-				 <a class="collapsed card-link" data-toggle="collapse" data-parent="#card-616186" href="#card-element-462447">玩转算法和数据结构</a>
-			</div>
-			<div id="card-element-462447" class="collapse">
-				<div class="card-body">
-					任何时候学习算法都不晚，而且越早越好，这么多年，你听说过技术过时，什么时候听说过算法过时，不仅没有过时，因为机器学习、大数据的要求，算法变得越来越重要了
+			<div class="col-md-8">
+				<div class="carousel slide" id="carousel-923781">
+					<ol class="carousel-indicators">
+						<li data-slide-to="0" data-target="#carousel-923781" class="active">
+						</li>
+						<li data-slide-to="1" data-target="#carousel-923781">
+						</li>
+						<li data-slide-to="2" data-target="#carousel-923781">
+						</li>
+					</ol>
+					<div class="carousel-inner">
+						<div class="carousel-item active">
+						<a href="../images/c.jpg" data-lightbox="example-set" data-title="Click the right half of the image to move forward.">
+						<img class="d-block w-100" alt="Carousel Bootstrap First" src="../images/c.jpg" width="260px" height="200px"/>
+							<div class="carousel-caption">
+								<h4 align="center">
+									C语言入门
+								</h4>
+								<p>
+									C语言入门视频教程，带你进入编程世界的必修课-C语言
+								</p>
+							</div></a>
+						</div>
+						<div class="carousel-item">
+						<a href="../images/sf.jpg" data-lightbox="example-set" data-title="Or press the right arrow on your keyboard.">
+							<img class="d-block w-100" alt="Carousel Bootstrap Second" src="../images/sf.jpg" width="260px" height="200px"/>
+							<div class="carousel-caption">
+								<h4 align="center">
+									玩转算法和数据结构
+								</h4>
+								<p>
+									ACM获奖者亲授算法面试基础，C++讲解，配套完整Java代码，培养算法思维，修炼编程内功
+								</p>
+							</div></a>
+						</div>
+						<div class="carousel-item">
+						<a href="../images/c++.jpg" data-lightbox="example-set" data-title="Or press the right arrow on your keyboard.">
+							<img class="d-block w-100" alt="Carousel Bootstrap Third" src="../images/c++.jpg" width="260px" height="200px"/>
+							<div class="carousel-caption">
+								<h4 align="center">
+									C++远征之起航篇
+								</h4>
+								<p>
+									C++亮点尽在其中，本课程是在C语言基础上的一个延伸，得以升华
+								</p>
+							</div></a>
+						</div>
+						</div> <a class="carousel-control-prev" href="#carousel-923781" data-slide="prev"><span class="carousel-control-prev-icon"></span> <span class="sr-only">Previous</span></a> <a class="carousel-control-next" href="#carousel-923781" data-slide="next"><span class="carousel-control-next-icon"></span> <span class="sr-only">Next</span></a>
+						</div>
+					</div>
+					</div>
 				</div>
 			</div>
-		</div>
-		<div class="card">
-			<div class="card-header">
-				 <a class="collapsed card-link" data-toggle="collapse" data-parent="#card-616186" href="#card-element-462347">C++远征之起航篇</a>
 			</div>
-			<div id="card-element-462347" class="collapse">
-				<div class="card-body">
-					简介：本教程是C++的初级教程，是在C语言基础上的一个延伸，讲述了包括新增数据类型、命名空间等内容，最后通过一个通俗易懂的例子将所述知识点融会贯通，以达到知识灵活运用，最终得以升华的目的。
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-<div class="col-md-8">
-	<div class="carousel slide" id="carousel-923781">
-		<ol class="carousel-indicators">
-			<li data-slide-to="0" data-target="#carousel-923781" class="active">
-			</li>
-			<li data-slide-to="1" data-target="#carousel-923781">
-			</li>
-			<li data-slide-to="2" data-target="#carousel-923781">
-			</li>
-		</ol>
-		<div class="carousel-inner">
-			<div class="carousel-item active">
-			<a href="../images/c.jpg" data-lightbox="example-set" data-title="Click the right half of the image to move forward.">
-			<img class="d-block w-100" alt="Carousel Bootstrap First" src="../images/c.jpg" width="260px" height="200px"/>
-				<div class="carousel-caption">
-					<h4 align="center">
-						C语言入门
-					</h4>
-					<p>
-						C语言入门视频教程，带你进入编程世界的必修课-C语言
-					</p>
-				</div></a>
-			</div>
-			<div class="carousel-item">
-			<a href="../images/sf.jpg" data-lightbox="example-set" data-title="Or press the right arrow on your keyboard.">
-				<img class="d-block w-100" alt="Carousel Bootstrap Second" src="../images/sf.jpg" width="260px" height="200px"/>
-				<div class="carousel-caption">
-					<h4 align="center">
-						玩转算法和数据结构
-					</h4>
-					<p>
-						ACM获奖者亲授算法面试基础，C++讲解，配套完整Java代码，培养算法思维，修炼编程内功
-					</p>
-				</div></a>
-			</div>
-			<div class="carousel-item">
-			<a href="../images/c++.jpg" data-lightbox="example-set" data-title="Or press the right arrow on your keyboard.">
-				<img class="d-block w-100" alt="Carousel Bootstrap Third" src="../images/c++.jpg" width="260px" height="200px"/>
-				<div class="carousel-caption">
-					<h4 align="center">
-						C++远征之起航篇
-					</h4>
-					<p>
-						C++亮点尽在其中，本课程是在C语言基础上的一个延伸，得以升华
-					</p>
-				</div></a>
-			</div>
-			</div> <a class="carousel-control-prev" href="#carousel-923781" data-slide="prev"><span class="carousel-control-prev-icon"></span> <span class="sr-only">Previous</span></a> <a class="carousel-control-next" href="#carousel-923781" data-slide="next"><span class="carousel-control-next-icon"></span> <span class="sr-only">Next</span></a>
-			</div>
-		</div>
-		</div>
-	</div>
-</div>
-</div>
-<!--推荐课结束  -->
+			<!--推荐课结束  -->
 	<%if(!name.equals("未登录")){ %>
 		<h4 class="h4wra" align="center" id="myCourse"><em>你的课程</em></h4>	
 		<%List<course> list=new ArrayList<course>(); 

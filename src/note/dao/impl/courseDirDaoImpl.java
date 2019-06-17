@@ -27,7 +27,7 @@ public class courseDirDaoImpl implements courseDirDao{
 			pstmt=dbc.getConnection().prepareStatement(sql);
 			pstmt.setString(1, name);
 			pstmt.setString(2, chapter);
-		/*	System.out.println("查询课程目录的sql语句："+pstmt);*/
+			/*System.out.println("查询课程目录的sql语句："+pstmt);*/
 			ResultSet rs=pstmt.executeQuery();
 			while(rs.next()){//有下个就执行，没有跳出
 				courseDir tCourseDir=new courseDir();

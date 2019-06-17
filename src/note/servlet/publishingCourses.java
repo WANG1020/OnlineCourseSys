@@ -96,6 +96,7 @@ public class publishingCourses extends HttpServlet {
 				}
 				
 				course.setImg("../images/"+file.getFileName());
+				
 				com.jspsmart.upload.Request req = su.getRequest();  
 	        	String courseName=req.getParameter("courseName");
 				String username=req.getParameter("name");

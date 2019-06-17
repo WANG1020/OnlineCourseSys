@@ -1,5 +1,4 @@
 @CHARSET "UTF-8";
-/* stu模块 */
 .div1{
 	background-image:url("../images/login(1).jpg");
 	width:100%;
@@ -21,8 +20,11 @@ table .trc{
 }
 .wra1{
  	float:right;
- 	padding-top:130px;
- 	padding-right:80px;
+ 	margin:100px auto;
+ 	border-radius: 15px;
+ 	background: #fff;
+    border: 1px solid #eaeaea;
+    box-shadow: 0 0 25px #cac6c6;
 }
 button{
 	button
@@ -31,7 +33,9 @@ table .wrath{
 	background-color:#dbdbdb;
 }
 table .tr1{
+	clear:both;
 	background-color:#e3e3e3;
+	padding-top:16px;
 }
 .input1{
 	width:220px;
