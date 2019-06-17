@@ -76,7 +76,8 @@ String courseName=request.getParameter("course_name");%>
 			</nav>
 		</div>
 	</div>
-	<div class="row">
+</div>
+<div class="row">
 		<div class="col-md-7">
 		<%
 		List<courseDir> dirlist=new ArrayList<courseDir>();
@@ -91,7 +92,6 @@ String courseName=request.getParameter("course_name");%>
 			<img src=<%=dirlist.get(0).getResources() %> width="760px" height="600px">
 		<%} %>
 		</div>
-	</div>
 </div>
 <div class="row">
 	<div class="col-md-7">
