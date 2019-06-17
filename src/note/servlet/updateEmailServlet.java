@@ -48,7 +48,8 @@ public class updateEmailServlet extends HttpServlet {
 		HttpSession session=request.getSession();
 		
 		String newEmail=request.getParameter("email");
-		
+		String location=request.getParameter("location");
+		System.out.println("location为"+location);
 		String name=(String)session.getAttribute("username");
 		user user=new user();
 		user.setEmail(newEmail);
@@ -60,11 +61,23 @@ public class updateEmailServlet extends HttpServlet {
 			
 			int i=newEmail.indexOf("@");
 			out.println("<a href='http://mail.'+newEmail.substring(i+1)+''></a>");
+			if(location.equals("teacher")||location=="teacher"){
 			out.print("<script language=javascript>alert('邮箱修改成功,绑定邮箱邮件将发送至您的邮箱！！');" +
-					"window.location.href='stu/ManAccoNum.jsp';</script>");
+					"window.location.href='teacher/ManAccoNum.jsp';</script>");
+			}else{
+				out.print("<script language=javascript>alert('邮箱修改成功,绑定邮箱邮件将发送至您的邮箱！！');" +
+						"window.location.href='stu/ManAccoNum.jsp';</script>");
+			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			if(location.equals("teacher")||location=="teacher"){
+				out.print("<script language=javascript>alert('邮箱修改成功,绑定邮箱邮件将发送至您的邮箱！！');" +
+					"window.location.href='teacher/ManAccoNum.jsp';</script>");
+			}else{
+				out.print("<script language=javascript>alert('邮箱修改成功,绑定邮箱邮件将发送至您的邮箱！！');" +
+					"window.location.href='stu/ManAccoNum.jsp';</script>");
+			}
 		}
 	}
 

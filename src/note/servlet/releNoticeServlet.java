@@ -58,6 +58,8 @@ public class releNoticeServlet extends HttpServlet {
 		
 		try {
 			DaoFactory.getnoteDaoInstance().releNotice(note);
+			out.print("<script language=javascript>alert('发布公告成功！');" +
+					"window.location.href='teacher/releNotice.jsp';</script>");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

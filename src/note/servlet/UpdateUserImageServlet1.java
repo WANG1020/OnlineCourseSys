@@ -54,7 +54,9 @@ public class UpdateUserImageServlet1 extends HttpServlet {
 		JspFactory fac=JspFactory.getDefaultFactory();
 		PageContext pageContext=fac.getPageContext(this, request,response, null, false, JspWriter.NO_BUFFER, true);
 		com.jspsmart.upload.File file = null;
-
+		
+		String location=request.getParameter("location");
+		
 		out.println("<html>");
 		out.println("<body><center><h3>");
 		//System.out.println("<%=id%>"+id);
@@ -94,13 +96,23 @@ public class UpdateUserImageServlet1 extends HttpServlet {
 		user.setHeadpor("../images/faces/"+file.getFileName());
 		DaoFactory.getuserDaoInstance().updateUserImg(user);
 		/*session.setAttribute("image",user.getHeadpor());*/
-		out.print("<script language=javascript>alert('头像上传成功！！！');" +
-		"window.location.href='stu/ManAccoNum.jsp';</script>");
+		if(location.equals("teacher")){
+			out.print("<script language=javascript>alert('头像上传成功！！！');" +
+			"window.location.href='teacher/ManAccoNum.jsp';</script>");
+		}else{
+			out.print("<script language=javascript>alert('头像上传成功！！！');" +
+					"window.location.href='stu/ManAccoNum.jsp';</script>");
+		}
 		} catch (Exception e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
-		out.print("<script language=javascript>alert('头像上传失败！！！请检查文件格式和大小！');" +
-		"window.location.href='stu/ManAccoNum.jsp';</script>");
+		if(location.equals("teacher")||location=="teacher"){
+			out.print("<script language=javascript>alert('头像上传成功！！！');" +
+			"window.location.href='teacher/ManAccoNum.jsp';</script>");
+		}else{
+			out.print("<script language=javascript>alert('头像上传成功！！！');" +
+					"window.location.href='stu/ManAccoNum.jsp';</script>");
+		}
 		}
 		out.println("</h3></center></body></html>");
 

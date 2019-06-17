@@ -16,13 +16,13 @@ function check_admin(form)
 	}
 	if(form.password.value==""||form.password.value.length<=0)
 	{
-		document.getElementById("warning1").style.display="block";
+		document.getElementById("warning2").style.display="block";
 		form.password.focus();
 		return false;
 	}
 	if (form.check.value==""||form.check.value.length<=0)
 	{
-		document.getElementById("warning1").style.display="block";
+		document.getElementById("warning3").style.display="block";
 		form.verify.focus();
 		return false;
 	}
@@ -36,7 +36,8 @@ function check_admin(form)
 </div>
 <div class="div1">
 <form  class="wra1" action="../LoginServlet?location=teacher" method="post" onSubmit="return check_admin(this)">
-	<table rules=none cellspacing=0  align="center" width="400px" height="300px">
+	<br>
+	<table class="login-form-table" rules=none cellspacing=0  align="center" width="400px" height="300px">
 		<tr class="tr1">
 			<th colspan="4" align="center">OnlineCourse-教师登录</th>
 		</tr>

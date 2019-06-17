@@ -55,21 +55,21 @@ public class searchServlet extends HttpServlet {
 			if(!DaoFactory.getcourseDaoInstance().searchCourse(search).isEmpty()&&DaoFactory.getcourseDaoInstance().searchCourse(search).size()>0){
 				if(method.equals("tea")){
 				out.print("<script language=javascript>" +
-						"window.location.href='stu/search.jsp';</script>");
+						"window.location.href='teacher/search.jsp';</script>");
 				}
 				if(method.equals("stu")){
 					out.print("<script language=javascript>" +
-							"window.location.href='teacher/search.jsp';</script>");	
+							"window.location.href='stu/search.jsp';</script>");	
 				}
 				hs.setAttribute("serarch-success-fail","success");
 			}else{
 				if(method.equals("tea")){
 				out.print("<script language=javascript>" +
-						"window.location.href='stu/search.jsp';</script>");
+						"window.location.href='teacher/search.jsp';</script>");
 				}
 				if(method.equals("stu")){
 					out.print("<script language=javascript>" +
-							"window.location.href='teacher/search.jsp';</script>");	
+							"window.location.href='stu/search.jsp';</script>");	
 				}
 				hs.setAttribute("serarch-success-fail","fail");
 			}

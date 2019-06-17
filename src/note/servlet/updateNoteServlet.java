@@ -50,7 +50,7 @@ public class updateNoteServlet extends HttpServlet {
 		String title=request.getParameter("title");
 		String content=request.getParameter("content");
 		String flag=request.getParameter("flag");
-		
+		String location=request.getParameter("location");
 		note note=new note();
 		note.setCourse_name(course_name);
 		note.setClassHour_name(class_name);
@@ -61,11 +61,23 @@ public class updateNoteServlet extends HttpServlet {
 		
 		try {
 			DaoFactory.getnoteDaoInstance().updateNote(note);
-			out.print("<script language=javascript>alert('发布成功！');" +
-					"window.location.href='stu/containStu.jsp?course_name="+course_name+"';</script>");
+			if(location.equals("tea")||location=="tea"){
+				out.print("<script language=javascript>alert('发布成功！');" +
+						"window.location.href='teacher/containStu.jsp?course_name="+course_name+"';</script>");
+			}else{
+				out.print("<script language=javascript>alert('发布成功！');" +
+						"window.location.href='stu/containStu.jsp?course_name="+course_name+"';</script>");
+			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			if(location.equals("tea")||location=="tea"){
+				out.print("<script language=javascript>alert('发布成功！');" +
+						"window.location.href='teacher/containStu.jsp?course_name="+course_name+"';</script>");
+			}else{
+				out.print("<script language=javascript>alert('发布成功！');" +
+						"window.location.href='stu/containStu.jsp?course_name="+course_name+"';</script>");
+			}
 		}
 		
 	}

@@ -63,7 +63,7 @@ if(!name.equals("未登录")){%>
 								 <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown"><%=name%></a>
 								<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
 									 <a class="dropdown-item" href="userHome.jsp">我的主页</a> <a class="dropdown-item" href="ManAccoNum.jsp">账号管理</a>
-									 <a class="dropdown-item" href="#">我的信息</a>
+									 <a class="dropdown-item" href="Info.jsp">我的信息</a>
 									<div class="dropdown-divider">
 									</div> <a class="dropdown-item" href="login.html">退出</a>
 								</div>
@@ -227,7 +227,7 @@ if(!name.equals("未登录")){%>
 								<%} %>
 								<div class="row">
 									<div class="col-md-6">
-										<form method="post" action="../updateNoteServlet">
+										<form method="post" action="../updateNoteServlet?location=stu">
 										  <div class="form-group row">
 										    <label for="text" class="col-4 col-form-label">title</label> 
 										    <div class="col-8">

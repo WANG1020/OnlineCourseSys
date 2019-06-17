@@ -49,8 +49,8 @@ String img=DaoFactory.getuserDaoInstance().userImg(name); %>
 					 <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown"><%=name%></a>
 					<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
 						 <a class="dropdown-item" href="userHome.jsp">我的主页</a> <a class="dropdown-item" href="ManAccoNum.jsp">账号管理</a>
-						  <a class="dropdown-item" href="publishingCourses.jsp">发布课程</a><a class="dropdown-item" href="#">发布公告</a>
-						   <a class="dropdown-item" href="#">我的信息</a>
+						  <a class="dropdown-item" href=publishingCourses.jsp?name=<%=name%>>发布课程</a><a class="dropdown-item" href="releNotice.jsp">发布公告</a>
+							<a class="dropdown-item" href="Info.jsp">我的信息</a>
 						<div class="dropdown-divider">
 						</div> <a class="dropdown-item" href="login.html">退出</a>
 					</div>

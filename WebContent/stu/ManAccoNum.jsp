@@ -95,7 +95,7 @@ function chceckPasswordNull(){
 									 <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown"><%=name%>></a>
 									<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
 										 <a class="dropdown-item" href="userHome.jsp">我的主页</a> <a class="dropdown-item" href="ManAccoNum.jsp"s>账号管理</a>
-										 <a class="dropdown-item" href="#">消息中心</a>
+										 <a class="dropdown-item" href="Info.jsp">我的信息</a>
 										<div class="dropdown-divider">
 										</div> <a class="dropdown-item" href="login.html">退出</a>
 									</div>
@@ -132,7 +132,7 @@ function chceckPasswordNull(){
 									<ul style="list-style:none;">
 										<li class="clearfix">
 											<div class="personPic">
-												<form action="../UpdateUserImageServlet1" method="post" enctype="multipart/form-data" onsubmit="return checkImgSubmit();">
+												<form action="../UpdateUserImageServlet1?location=stu" method="post" enctype="multipart/form-data" onsubmit="return checkImgSubmit();">
 													<%String headimg=DaoFactory.getuserDaoInstance().userImg(name); %>
 													<img width="130px" height="130px" src=<%=headimg %>>
 													<input id="file1" class="awra1 " type="file" name="file1" size="20">
@@ -147,7 +147,7 @@ function chceckPasswordNull(){
 										</li>
 										<li class="clearfix">
 											<div  class="liwra1">
-											<form action="../updateEmailServlet" method="post" onsubmit="return checkEmailSubmit();">
+											<form action="../updateEmailServlet?location=stu" method="post" onsubmit="return checkEmailSubmit();">
 												<p>邮箱：<input id="email" name="email" type="text">&nbsp;<input class="btn btn-outline-info" type="submit" value="绑定邮箱" name="submit-email"></p>
 											</form>
 											</div>
