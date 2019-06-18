@@ -8,6 +8,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="shortcut icon" href="../images/icon.ico"/>
 <title>我的信息</title>
 <link rel="stylesheet" type="text/css" href="../css/info.css" charset=UTF-8>
 <link href="../bootstrap4/css/bootstrap.min.css" rel="stylesheet">
@@ -66,13 +67,14 @@ String img=DaoFactory.getuserDaoInstance().userImg(name); %>
 	</div>
 </nav>
 <br>
-<div class="divwra1">
+<div class="divwra1" style="overflow: hidden;">
 <br>
 	<span class="msgCenter_sp  fl">消息中心</span>
+	<div style="width:102%;height:520px;overflow:auto;">
 	<%List<note> list=new ArrayList<note>();
 	list=DaoFactory.getnoteDaoInstance().findAllNotice(name);
-	System.out.print("公告的长度为"+list.size());%>
-	<div id="Whole_li" class="msg_ReadInfo clearfix">
+	/* System.out.print("公告的长度为"+list.size()); */%>
+	<div id="Whole_li" class="msg_ReadInfo clearfix" style="width:80%">
 	<ul id="allMessageUl" class="msg_ReadInfoList">
 	<%if(list.size()!=0){
 		for(int i=0;i<list.size();i++){
@@ -94,6 +96,7 @@ String img=DaoFactory.getuserDaoInstance().userImg(name); %>
 	} %>
 				</ul>
 		</div>
+	</div>
 </div>
 </body>
 </html>

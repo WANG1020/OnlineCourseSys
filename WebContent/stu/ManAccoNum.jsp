@@ -6,6 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="shortcut icon" href="../images/icon.ico"/>
 <title>OnliceCourse-账号中心</title>
 <link rel="stylesheet" type="text/css" href="../css/ManAccoNum.css" charset=UTF-8>
 <link href="../bootstrap4/css/bootstrap.min.css" rel="stylesheet">

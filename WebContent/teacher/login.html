@@ -1,8 +1,10 @@
 <!DOCTYPE html>
+<!-- teacher -->
 <html>
 <head>
 <!-- stu -->
 <meta http-equiv='Content-Type' content='text/html; charset=UTF-8'>
+<link rel="shortcut icon" href="../images/icon.ico"/>
 <title>OnlineCourse</title>
 <link rel="stylesheet" type="text/css" href="../css/login1.css">
 <script>
@@ -35,6 +37,23 @@ function check_admin(form)
 	<img src="../images/icon.png" width="170px" height="40px">
 </div>
 <div class="div1">
+<!-- <%
+		String username = "";
+		String password = "";
+		Cookie[] c = request.getCookies();
+		if (c != null) {
+			for (int i = 0; i < c.length; i++) {
+				if ("username".equals(c[i].getName())) {
+					username = c[i].getValue();
+				} else if ("password".equals(c[i].getName())) {
+					password = c[i].getValue();
+				}
+			}
+		} else {
+			username = " ";
+			password = " ";
+		}
+%> -->
 <form  class="wra1" action="../LoginServlet?location=teacher" method="post" onSubmit="return check_admin(this)">
 	<br>
 	<table class="login-form-table" rules=none cellspacing=0  align="center" width="400px" height="300px">

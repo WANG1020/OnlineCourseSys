@@ -9,7 +9,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<link rel="shortcut icon" href="../images/icon.ico"/>
+<title>用户主页</title>
 <link rel="stylesheet" type="text/css" href="../css/userHome.css">
 <link href="../bootstrap4/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" href="../dist/css/lightbox.min.css">
@@ -101,8 +102,9 @@ if(!name.equals("未登录")){%>
 						</div>
 					</div>
 					<div class="col-md-4">
-						<div class="divwra1-right">
-							<h4 align="center">你的课程</h4>
+						<div class="divwra1-right"  style="overflow: hidden;">
+						<h4 align="center">你的课程</h4>
+						<div style="height:500px;width:104%;overflow:auto">
 							<% for(int j=0;j<list.size();j++){%>
 								<div class="divwra1-right-div1">
 									<div class="card">
@@ -120,6 +122,7 @@ if(!name.equals("未登录")){%>
 								</div>
 								<br>
 							<%}%>
+						</div>
 						</div>
 					</div>
 				</div>

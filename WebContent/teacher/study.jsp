@@ -10,6 +10,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="shortcut icon" href="../images/icon.ico"/>
 <title>OnlineCourse-学习界面</title>
 <link rel="stylesheet" type="text/css" href="../css/study.css" charset=UTF-8>
 <link href="../bootstrap4/css/bootstrap.min.css" rel="stylesheet">

@@ -5,7 +5,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<link rel="shortcut icon" href="../images/icon.ico"/>
+<title>删除课程</title>
 </head>
 <body>
 <%
