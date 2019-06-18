@@ -39,7 +39,7 @@ CREATE TABLE `course` (
   `teacher` varchar(30) DEFAULT NULL,
   `img` varchar(20) DEFAULT NULL,
   KEY `id` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8;
 
 /*Data for the table `course` */
 
@@ -51,6 +51,7 @@ insert  into `course`(`id`,`name`,`intro`,`Deintro`,`teacher`,`img`) values (7,'
 insert  into `course`(`id`,`name`,`intro`,`Deintro`,`teacher`,`img`) values (28,'线代','线代线代','线代线代线代','tea1','../images/tx.jpg');
 insert  into `course`(`id`,`name`,`intro`,`Deintro`,`teacher`,`img`) values (29,'高数','高数基础','高数入门，基础课程','tea2','../images/tx.jpg');
 insert  into `course`(`id`,`name`,`intro`,`Deintro`,`teacher`,`img`) values (30,'帖食堂试图色图','帖食堂试图色图','帖食堂试图色图','tea1','../images/python.jpg');
+insert  into `course`(`id`,`name`,`intro`,`Deintro`,`teacher`,`img`) values (31,'钢铁是怎样炼成的','钢铁是这样炼成的','对，钢铁是这样炼成的。','tea3','../images/kc1.jpg');
 
 /*Table structure for table `coursedir` */
 
@@ -63,7 +64,7 @@ CREATE TABLE `coursedir` (
   `classHour_name` varchar(30) DEFAULT NULL,
   `resources` varchar(30) DEFAULT NULL,
   KEY `id` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=48 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=utf8;
 
 /*Data for the table `coursedir` */
 
@@ -89,6 +90,7 @@ insert  into `coursedir`(`id`,`course_name`,`chapter_id`,`chapter_name`,`classHo
 insert  into `coursedir`(`id`,`course_name`,`chapter_id`,`chapter_name`,`classHour_id`,`classHour_name`,`resources`) values (45,'线代','1',' C++简介	','1-1','C+++输入，输出流','../videos/v2.mp4');
 insert  into `coursedir`(`id`,`course_name`,`chapter_id`,`chapter_name`,`classHour_id`,`classHour_name`,`resources`) values (46,'线代','2','C++入门','2-1','C+++输入，输出流','../videos/v2.mp4');
 insert  into `coursedir`(`id`,`course_name`,`chapter_id`,`chapter_name`,`classHour_id`,`classHour_name`,`resources`) values (47,'高数','1',' C++简介	','1-1','C+++输入，输出流','../videos/v2.mp4');
+insert  into `coursedir`(`id`,`course_name`,`chapter_id`,`chapter_name`,`classHour_id`,`classHour_name`,`resources`) values (48,'钢铁是怎样炼成的','1','《钢铁》-引','1-1','钢铁的组成','../videos/v2.mp4');
 
 /*Table structure for table `electivecourse` */
 
@@ -100,7 +102,7 @@ CREATE TABLE `electivecourse` (
   `headpor` varchar(40) DEFAULT NULL,
   `class_name` varchar(20) DEFAULT NULL,
   KEY `id` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8;
 
 /*Data for the table `electivecourse` */
 
@@ -119,6 +121,9 @@ insert  into `electivecourse`(`id`,`name`,`password`,`email`,`headpor`,`class_na
 insert  into `electivecourse`(`id`,`name`,`password`,`email`,`headpor`,`class_name`) values (20,'tea2','123456',NULL,NULL,'高数');
 insert  into `electivecourse`(`id`,`name`,`password`,`email`,`headpor`,`class_name`) values (21,'stu1','123456',NULL,NULL,'线代');
 insert  into `electivecourse`(`id`,`name`,`password`,`email`,`headpor`,`class_name`) values (22,'tea1','123456',NULL,NULL,'帖食堂试图色图');
+insert  into `electivecourse`(`id`,`name`,`password`,`email`,`headpor`,`class_name`) values (23,'tea3','123456',NULL,NULL,'Python数据预处理');
+insert  into `electivecourse`(`id`,`name`,`password`,`email`,`headpor`,`class_name`) values (24,'tea3','123456',NULL,NULL,'钢铁是怎样炼成的');
+insert  into `electivecourse`(`id`,`name`,`password`,`email`,`headpor`,`class_name`) values (25,'stu4','123456',NULL,NULL,'钢铁是怎样炼成的');
 
 /*Table structure for table `note` */
 
@@ -126,12 +131,12 @@ CREATE TABLE `note` (
   `id` int(20) NOT NULL AUTO_INCREMENT,
   `course_name` varchar(30) DEFAULT NULL,
   `classHour_name` varchar(20) DEFAULT NULL,
-  `title` varchar(20) DEFAULT NULL,
+  `title` varchar(50) DEFAULT NULL,
   `author` varchar(20) DEFAULT NULL,
-  `content` varchar(60) DEFAULT NULL,
+  `content` varchar(100) DEFAULT NULL,
   `flag` varchar(20) DEFAULT NULL,
   KEY `id` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8;
 
 /*Data for the table `note` */
 
@@ -155,6 +160,11 @@ insert  into `note`(`id`,`course_name`,`classHour_name`,`title`,`author`,`conten
 insert  into `note`(`id`,`course_name`,`classHour_name`,`title`,`author`,`content`,`flag`) values (25,'C语言入门',NULL,'提醒！！!','tea2','童靴，你的进度落后了哦！','2');
 insert  into `note`(`id`,`course_name`,`classHour_name`,`title`,`author`,`content`,`flag`) values (26,'C语言入门',NULL,'提醒！！','tea1','童靴，你的进度落后了哦2！','2');
 insert  into `note`(`id`,`course_name`,`classHour_name`,`title`,`author`,`content`,`flag`) values (27,'玩转算法和数据结构',NULL,'注意！！！','tea3','童靴，你的进度落后了哦2！','2');
+insert  into `note`(`id`,`course_name`,`classHour_name`,`title`,`author`,`content`,`flag`) values (28,'',NULL,'','tea1','','2');
+insert  into `note`(`id`,`course_name`,`classHour_name`,`title`,`author`,`content`,`flag`) values (29,'Python数据预处理',NULL,'!!!','tea1','你的进度落后于其他同学，记得登录学习噢！','2');
+insert  into `note`(`id`,`course_name`,`classHour_name`,`title`,`author`,`content`,`flag`) values (33,'Python数据预处理','Python数据预处理','课程不错噢！','tea3','enmmm','0');
+insert  into `note`(`id`,`course_name`,`classHour_name`,`title`,`author`,`content`,`flag`) values (34,'钢铁是怎样炼成的','钢铁是怎样炼成的','欢迎同学们，参加本课程','tea3','12','0');
+insert  into `note`(`id`,`course_name`,`classHour_name`,`title`,`author`,`content`,`flag`) values (35,'钢铁是怎样炼成的','钢铁是怎样炼成的','test1','tea3','测试功能','0');
 
 /*Table structure for table `teacher` */
 
@@ -166,7 +176,7 @@ CREATE TABLE `teacher` (
   `headpor` varchar(40) DEFAULT NULL,
   `class_name` varchar(20) DEFAULT NULL,
   KEY `id` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 /*Data for the table `teacher` */
 
@@ -175,6 +185,7 @@ insert  into `teacher`(`id`,`name`,`password`,`email`,`headpor`,`class_name`) va
 insert  into `teacher`(`id`,`name`,`password`,`email`,`headpor`,`class_name`) values (3,'tea1','123456',NULL,NULL,'线代');
 insert  into `teacher`(`id`,`name`,`password`,`email`,`headpor`,`class_name`) values (4,'tea2','123456',NULL,NULL,'高数');
 insert  into `teacher`(`id`,`name`,`password`,`email`,`headpor`,`class_name`) values (5,'tea1','123456',NULL,NULL,'帖食堂试图色图');
+insert  into `teacher`(`id`,`name`,`password`,`email`,`headpor`,`class_name`) values (6,'tea3','123456',NULL,NULL,'钢铁是怎样炼成的');
 
 /*Table structure for table `user` */
 
@@ -191,13 +202,13 @@ CREATE TABLE `user` (
 
 /*Data for the table `user` */
 
-insert  into `user`(`id`,`name`,`password`,`email`,`headpor`,`flag`,`active`) values (1,'stu1','1234','1647088054@qq.com','../images/faces/tx.jpg','0','1');
-insert  into `user`(`id`,`name`,`password`,`email`,`headpor`,`flag`,`active`) values (2,'stu2','123456','1647088054@qq.com','../images/faces/f2.png','0','1');
-insert  into `user`(`id`,`name`,`password`,`email`,`headpor`,`flag`,`active`) values (3,'tea1','123','1647088054@qq.com','../images/faces/tx.jpg','1','1');
-insert  into `user`(`id`,`name`,`password`,`email`,`headpor`,`flag`,`active`) values (4,'tea2','123456','1647088054@qq.com','../images/faces/f7.png','1','1');
+insert  into `user`(`id`,`name`,`password`,`email`,`headpor`,`flag`,`active`) values (1,'stu1','1234','1647088054@qq.com','../images/faces/t4.jpg','0','1');
+insert  into `user`(`id`,`name`,`password`,`email`,`headpor`,`flag`,`active`) values (2,'stu2','123','1647088054@qq.com','../images/faces/t3.jpg','0','1');
+insert  into `user`(`id`,`name`,`password`,`email`,`headpor`,`flag`,`active`) values (3,'tea1','123','1647088054@qq.com','../images/faces/t6.jpg','1','1');
+insert  into `user`(`id`,`name`,`password`,`email`,`headpor`,`flag`,`active`) values (4,'tea2','123456','1647088054@qq.com','../images/faces/t2.jpg','1','1');
 insert  into `user`(`id`,`name`,`password`,`email`,`headpor`,`flag`,`active`) values (5,'ad1','123456','1647088054@qq.com','../images/faces/f9.png','2','1');
 insert  into `user`(`id`,`name`,`password`,`email`,`headpor`,`flag`,`active`) values (6,'ad2','123456','1647088054@qq.com','../images/faces/f6.png','2','1');
-insert  into `user`(`id`,`name`,`password`,`email`,`headpor`,`flag`,`active`) values (7,'tea3','1234','1647088054@qq.com','../images/faces/f1.png','1','0');
+insert  into `user`(`id`,`name`,`password`,`email`,`headpor`,`flag`,`active`) values (7,'tea3','1234','1647088054@qq.com','../images/faces/t5.jpg','1','0');
 insert  into `user`(`id`,`name`,`password`,`email`,`headpor`,`flag`,`active`) values (11,'stu4','1234','1647088054@qq.com','../images/faces/f4.png','0','0');
 insert  into `user`(`id`,`name`,`password`,`email`,`headpor`,`flag`,`active`) values (12,'张三','1234','1647088054@qq.com','../images/faces/f6.png','0','0');
 
