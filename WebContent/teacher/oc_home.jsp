@@ -73,7 +73,7 @@
 										 <a class="dropdown-item" href=publishingCourses.jsp?name=<%=name%>>发布课程</a><a class="dropdown-item" href="releNotice.jsp">发布公告</a>
 										  <a class="dropdown-item" href="Info.jsp">我的信息</a>
 										<div class="dropdown-divider">
-										</div> <a class="dropdown-item" href="login.html">退出</a>
+										</div> <a class="dropdown-item" href="login.html" >退出</a>
 									</div>
 								</li>
 								<li>
@@ -234,7 +234,13 @@
 		<% for(int j=0;j<size;j++){%>
 			<div class="col-md-3">
 					<div class="card">
+					<%
+						if(DaoFactory.getcourseDaoInstance().existCourse(list.get(j).getName(), name)){%>
 						<a  href=containStu.jsp?course_name=<%=list.get(j).getName() %>>
+						
+					<%}else{ %>
+						<a  href=taParInStu.jsp?course_name=<%=list.get(j).getName() %>>
+					<%} %>
 						<img class="card-img-top" alt="kec1" src=<%=list.get(j).getImg() %> width="294px" height="98px" /></a>
 						<div class="card-block">
 							<h5 class="card-title" align="center">
@@ -266,9 +272,9 @@
 </div>
 <script type="text/javascript">
 $('.carousel').carousel({
-	interval:4000,
+	interval:800,
 	pause:false
-})
+});
 </script>
 </body>
 </html>

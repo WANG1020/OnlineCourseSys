@@ -233,7 +233,12 @@
 		<% for(int j=0;j<size;j++){%>
 			<div class="col-md-3">
 					<div class="card">
-						<a  href=containStu.jsp?course_name=<%=list.get(j).getName() %>>
+						<%
+						if(DaoFactory.getcourseDaoInstance().existCourse(list.get(j).getName(), name)){%>
+							<a  href=containStu.jsp?course_name=<%=list.get(j).getName() %>>
+						<%}else{ %>
+							<a  href=taParInStu.jsp?course_name=<%=list.get(j).getName() %>>
+						<%} %>
 						<img class="card-img-top" alt="kec1" src=<%=list.get(j).getImg() %> width="294px" height="98px" /></a>
 						<div class="card-block">
 							<h5 class="card-title" align="center">

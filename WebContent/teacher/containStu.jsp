@@ -85,30 +85,25 @@ if(!name.equals("未登录")){%>
 	List<course> list=new ArrayList<course>();
 	list=DaoFactory.getcourseDaoInstance().studyCourse(course_name);
 %>
-<div style="background:#eeeeee;">
+<div class="container-fluid" style="background:#e9e9e9">
 	<div class="row">
-		<div class="col-md-12">
-			 <!-- <span class="badge badge-default">Label</span> -->
+		<div class="col-md-8">
 			<div class="row">
-				<div class="col-md-3">
+				<div class="col-md-6">
 					<img alt="course-img" src=<%=list.get(0).getImg() %> width="130px" height="90px"  />
 				</div>
 				<div class="col-md-6">
-				<br>
 					<h3>
 						<%=list.get(0).getName() %>
 					</h3>
-					<p>任课教师：<%=list.get(0).getTeacher() %></p>
-				</div>
-				<div class="col-md-2">
-				<br>
-					<a><button type="button" class="btn btn-outline-info">
-						继续学习
-					</button></a>
-				</div>
-				<div class="col-md-1">
 				</div>
 			</div>
+		</div>
+		<div class="col-md-4">
+			<p>任课教师：<%=list.get(0).getTeacher() %></p>
+			<a><button type="button" class="btn btn-outline-info">
+				继续学习
+			</button></a>
 		</div>
 	</div>
 </div>
