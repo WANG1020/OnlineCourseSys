@@ -35,7 +35,6 @@ if(!name.equals("未登录")){%>
 		<div class="row">
 			<div class="col-md-12">
 				<nav class="navbar navbar-expand-lg navbar-light bg-light">
-					 
 					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
 						<span class="navbar-toggler-icon"></span>
 					</button>
@@ -51,7 +50,7 @@ if(!name.equals("未登录")){%>
 								 <a class="nav-link" href="#">我的题库</a>
 							</li>
 						</ul>
-						<form class="form-inline" action="../searchServlet?method=stu" method="post"> 
+						<form class="form-inline" action="../searchServlet?method=tea" method="post"> 
 							<input class="form-control mr-sm-2" type="text" name="search-value"/> 
 							<button class="btn btn-primary my-2 my-sm-0" type="submit">
 								搜索
@@ -64,7 +63,7 @@ if(!name.equals("未登录")){%>
 								 <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown"><%=name%></a>
 								<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
 									 <a class="dropdown-item" href="userHome.jsp">我的主页</a> <a class="dropdown-item" href="ManAccoNum.jsp">账号管理</a>
-									 <a class="dropdown-item" href="Info.jsp">我的信息</a>
+										  <a class="dropdown-item" href="Info.jsp">我的信息</a>
 									<div class="dropdown-divider">
 									</div> <a class="dropdown-item" href="login.html">退出</a>
 								</div>
@@ -86,30 +85,25 @@ if(!name.equals("未登录")){%>
 	List<course> list=new ArrayList<course>();
 	list=DaoFactory.getcourseDaoInstance().studyCourse(course_name);
 %>
-<div style="background:#eeeeee;">
+<div class="container-fluid" style="background:#e9e9e9">
 	<div class="row">
-		<div class="col-md-12">
-			 <!-- <span class="badge badge-default">Label</span> -->
+		<div class="col-md-8">
 			<div class="row">
-				<div class="col-md-3">
+				<div class="col-md-6">
 					<img alt="course-img" src=<%=list.get(0).getImg() %> width="130px" height="90px"  />
 				</div>
 				<div class="col-md-6">
-				<br>
 					<h3>
 						<%=list.get(0).getName() %>
 					</h3>
-					<p>任课教师：<%=list.get(0).getTeacher() %></p>
-				</div>
-				<div class="col-md-2">
-				<br>
-					<a><button type="button" class="btn btn-outline-info">
-						继续学习
-					</button></a>
-				</div>
-				<div class="col-md-1">
 				</div>
 			</div>
+		</div>
+		<div class="col-md-4">
+			<p>任课教师：<%=list.get(0).getTeacher() %></p>
+			<a><button type="button" class="btn btn-outline-info">
+				继续学习
+			</button></a>
 		</div>
 	</div>
 </div>
@@ -132,6 +126,9 @@ if(!name.equals("未登录")){%>
 				<div class="tab-content">
 					<div class="tab-pane active divwra"  id="tab1">
 						<!-- 章节目录开始 -->
+						<%if(DaoFactory.getelectiveCourseDaoInstance().existRecord(name, list.get(0).getName())){ %>
+							<a href=courseDir.jsp?name=<%=list.get(0).getName() %>>编辑目录</a>
+						<%} %>
 						<%
 						int number=DaoFactory.getcourseDirDaoInstance().searchAllChapterNum(list.get(0).getName());
 						if(number!=0){%>
@@ -166,8 +163,9 @@ if(!name.equals("未登录")){%>
 							<%} %>
 							<!-- "章节目录"结束 -->
 					</div>
-					<div class="tab-pane" id="tab2">
+					<div class="tab-pane" id="tab2" style="overflow: hidden;">
 						<!-- 问答评论开始 -->
+						<div style="width:102%;max-height:520px;overflow:auto;">
 							<%for(int i=1;i<=number;i++){
 								String chapterString=i+"-";
 								int chaNum=DaoFactory.getcourseDirDaoInstance().searchClaHouNum(list.get(0).getName() , chapterString);
@@ -226,9 +224,10 @@ if(!name.equals("未登录")){%>
 										</div>
 									</div>
 								<%} %>
+								</div>
 								<div class="row">
 									<div class="col-md-6">
-										<form method="post" action="../updateNoteServlet?location=stu">
+										<form method="post" action="../updateNoteServlet?location=tea">
 										  <div class="form-group row">
 										    <label for="text" class="col-4 col-form-label">title</label> 
 										    <div class="col-8">

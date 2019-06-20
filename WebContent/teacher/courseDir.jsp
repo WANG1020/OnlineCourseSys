@@ -129,13 +129,13 @@ String img=DaoFactory.getuserDaoInstance().userImg(name); %>
 				<div class="tab-pane" id="tab2">
 					<div class="divwra1">
 						<br>
-						<form method="post" action="../insertDir">
+						<form method="post" action="../insertDir" enctype="multipart/form-data">
 							<input type="hidden" name="courseName" id="courseName" value=<%=courseString %>>
 							<p>章节id:&nbsp;<input type="text" id="chapterId" name="chapterId"></p>
 							<p>章节名:&nbsp;<input type="text" id="chapterName" name="chapterName"></p>
 							<p>课时id:&nbsp;<input type="text" id="classHId" name="classHId"></p>
 							<p>课时名:&nbsp;<input type="text" id="classHName" name="classHName"></p>
-							<p>课时资源:&nbsp;<input type="text" id="res" name="res"></p>
+							<p>课时资源:&nbsp;<input type="file" id="res" name="res"></p>
 							<input type="submit"  value="发布课时">
 						</form>
 					</div>

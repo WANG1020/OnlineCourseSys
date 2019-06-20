@@ -164,8 +164,9 @@ if(!name.equals("未登录")){%>
 							<%} %>
 							<!-- "章节目录"结束 -->
 					</div>
-					<div class="tab-pane" id="tab2">
+					<div class="tab-pane" id="tab2" style="overflow: hidden;">
 						<!-- 问答评论开始 -->
+						<div style="width:102%;max-height:520px;overflow:auto;">
 							<%for(int i=1;i<=number;i++){
 								String chapterString=i+"-";
 								int chaNum=DaoFactory.getcourseDirDaoInstance().searchClaHouNum(list.get(0).getName() , chapterString);
@@ -224,6 +225,7 @@ if(!name.equals("未登录")){%>
 										</div>
 									</div>
 								<%} %>
+								</div>
 								<div class="row">
 									<div class="col-md-6">
 										<form method="post" action="../updateNoteServlet?location=tea">

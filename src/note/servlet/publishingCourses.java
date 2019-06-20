@@ -55,6 +55,7 @@ public class publishingCourses extends HttpServlet {
 		response.setCharacterEncoding("UTF-8");
 		HttpSession session=request.getSession();
 		PrintWriter out=response.getWriter();
+		
 		JspFactory fac=JspFactory.getDefaultFactory();
 		PageContext pageContext=fac.getPageContext(this, request,response, null, false, JspWriter.NO_BUFFER, true);
 		com.jspsmart.upload.File file = null;
@@ -102,17 +103,19 @@ public class publishingCourses extends HttpServlet {
 				String username=req.getParameter("name");
 				String intro=req.getParameter("intro");
 				String deintro=req.getParameter("Deintro");
-				System.out.println("courseName为"+courseName);
+				/*System.out.println("courseName为"+courseName);
 				System.out.println("username为"+username);
 				System.out.println("intro为"+intro);
-				System.out.println("deintro为"+deintro);
+				System.out.println("deintro为"+deintro);*/
 				course.setName(courseName);
 				course.setInto(intro);
 				course.setDeintro(deintro);
 				course.setTeacher(username);
+				
 				electivecourse electivecourse=new electivecourse();
 				electivecourse.setName(username);
 				electivecourse.setClass_name(courseName);
+				
 				DaoFactory.getcourseDaoInstance().insert(course);
 				DaoFactory.getelectiveCourseDaoInstance().insertRecord(electivecourse);
 				DaoFactory.getelectiveCourseDaoInstance().insertReRecord(electivecourse);
