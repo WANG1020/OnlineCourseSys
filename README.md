@@ -1,6 +1,6 @@
 这是大二的实训项目 
 用servlet+jsp+bootstrap+jquery+Mysql编写
-
+用Tomcat来运行
 
 ```
 #前后端未分离，
@@ -8,6 +8,7 @@
 1.克隆下来后
 2.在mysql中运行sql文件，导入数据库，
 3.然后再Eclipse中导入项目。
+4.配置Tomcat服务器
 ```
 
 **功能模块：
